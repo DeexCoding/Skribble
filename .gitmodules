@@ -1,0 +1,3 @@
+[submodule "Skribble/vendor/spdlog"]
+	path = Skribble/vendor/spdlog
+	url = https://github.com/gabime/spdlog
