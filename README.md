@@ -1,2 +1,2 @@
 # Skribble
-Skribble engine
+A game engine written in c++
