@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Core.h"
+
 #ifdef  SKRIBBLE_WINDOWS
 
 extern Skribble::Application* Skribble::CreateApplication();

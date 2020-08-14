@@ -1,5 +1,31 @@
 #pragma once
 
+#include <memory>
+
+//Platforms
+#ifdef _WIN64
+#ifndef SKRIBBLE_WINDOWS
+#define SKRIBBLE_WINDOWS
+#endif 
+#elif
+#error "32bit is not supported!"
+#elif defined(__APPLE__) || defined(__MACH__)
+#if TARGET_OS_MAC == 1
+#ifndef SKRIBBLE_MAC
+#define SKRIBBLE_MAC
+#endif 
+#error "Mac is not supported!"
+#endif
+#elif defined (__linux__)
+#ifndef SKRIBBLE_LINUX
+#define SKRIBBLE_LINUX
+#endif 
+#error "Linux is not supported!"
+#else
+#error "Unknown platform!"
+#endif
+
+//DLL
 #ifdef SKRIBBLE_WINDOWS
 	#ifdef SKRIBBLE_DLL
 		#define SKRIBBLE_API __declspec(dllexport)
@@ -9,3 +35,43 @@
 #else
 	#error Skribble only supports Windows!
 #endif
+
+//Debug
+
+#ifdef SKRIBBLE_DEBUG
+#if defined(SKRIBBLE_WINDOWS)
+#define SKRIBBLE_DEBUGBREAK() __debugbreak()
+#elif defined(SKRIBBLE_LINUX)
+#include <signal.h>
+#define SKRIBBLE_DEBUGBREAK() raise(SIGTRAP)
+#else
+#error "Platform doesn't support debugbreak yet!"
+#endif
+#define SKRIBBLE_ENABLE_ASSERTS
+#else
+#define SKRIBBLE_DEBUGBREAK()
+#endif
+
+#ifdef SKRIBBLE_ENABLE_ASSERTS
+#define SKRIBBLE_ASSERT(x, ...) { if(!(x)) { SKRIBBLE_ERROR("Assertion failed : {0}", __VA_ARGS__); SKRIBBLE_DEBUGBREAK(); } }
+#define SKRIBBLE_CORE_ASSERT(x, ...) { if(!(x)) { SKRIBBLE_CORE_ERROR("Assertion failed : {0}", __VA_ARGS__); SKRIBBLE_DEBUGBREAK(); } }
+#else
+#define SKRIBBLE_ASSERT(x, ...)
+#define SKRIBBLE_CORE_ASSERT(x, ...)
+#endif
+
+#define BSR(x) (1 << x)
+#define BSL(x) (1 >> x)
+
+#define BIND_EVENTFUNCTION(x) std::bind(&x, this, std::placeholders::_1)
+
+namespace Skribble
+{
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+	template<typename T, typename ... Args>
+	constexpr Ref<T> CreateRef(Args&& ... args)
+	{
+		return std::make_shared<T>(std::forward<Args>(args)...);
+	}
+}

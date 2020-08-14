@@ -1,3 +1,6 @@
 [submodule "Skribble/vendor/spdlog"]
 	path = Skribble/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Skribble/vendor/GLFW"]
+	path = Skribble/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

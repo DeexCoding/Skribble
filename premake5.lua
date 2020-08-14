@@ -1,5 +1,5 @@
 workspace "Skribble"
-	architecture "x64"
+	architecture "x86_x64"
 
 	configurations
 	{
@@ -10,6 +10,13 @@ workspace "Skribble"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Skribble/vendor/GLFW/include"
+
+group "Dependecies"
+include "Skribble/vendor/GLFW"
+group ""
+
 project "Skribble"
 	location "Skribble"
 	kind "SharedLib"
@@ -17,6 +24,9 @@ project "Skribble"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "skpch.h"
+	pchsource "Skribble/src/skpch.cpp"
 
 	files
 	{
@@ -26,7 +36,15 @@ project "Skribble"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -47,14 +65,17 @@ project "Skribble"
 
 	filter "configurations:Debug"
 		defines "SKRIBBLE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Relese"
 		defines "SKRIBBLE_RELESE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "SKRIBBLE_DISTRIBUTION"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Game"
@@ -94,12 +115,15 @@ project "Game"
 
 	filter "configurations:Debug"
 		defines "SKRIBBLE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Relese"
 		defines "SKRIBBLE_RELESE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Distribution"
 		defines "SKRIBBLE_DISTRIBUTION"
+		buildoptions "/MD"
 		optimize "On"

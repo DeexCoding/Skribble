@@ -1,23 +1,25 @@
 #pragma once
 
-#include <memory>
-
 #include "Core.h"
-#include "spdlog/spdlog.h"
+
+#include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 namespace Skribble
 {
 	class SKRIBBLE_API Debug
 	{
 	public:
+
 		static void Initalize();
 
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return coreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return clientLogger; }
+		static Ref<spdlog::logger>& GetCoreLogger() { return coreLogger; }
+		static Ref<spdlog::logger>& GetClientLogger() { return clientLogger; }
 
 	private:
-	 	static std::shared_ptr<spdlog::logger> coreLogger;
-		static std::shared_ptr<spdlog::logger> clientLogger;
+
+		static Ref<spdlog::logger> coreLogger;
+		static Ref<spdlog::logger> clientLogger;
 	};
 }
 

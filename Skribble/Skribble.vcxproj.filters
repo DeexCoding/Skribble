@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Skribble">
       <UniqueIdentifier>{93443253-7F11-8D5E-A82A-7B069456C2EC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Skribble\Events">
+      <UniqueIdentifier>{17ADC078-8338-2E3D-8C49-B131F8538A3D}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Skribble.h" />
     <ClInclude Include="src\Skribble\Application.h">
       <Filter>Skribble</Filter>
@@ -16,16 +28,46 @@
     <ClInclude Include="src\Skribble\Debug.h">
       <Filter>Skribble</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Entry.h">
+    <ClInclude Include="src\Skribble\Events\ApplicationEvent.h">
+      <Filter>Skribble\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Events\Event.h">
+      <Filter>Skribble\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Events\KeyEvent.h">
+      <Filter>Skribble\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Events\MouseEvent.h">
+      <Filter>Skribble\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Layer.h">
       <Filter>Skribble</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skribble\LayerStack.h">
+      <Filter>Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Window.h">
+      <Filter>Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\skpch.h" />
+    <ClInclude Include="src\Skribble\Entry.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Skribble\Application.cpp">
       <Filter>Skribble</Filter>
     </ClCompile>
     <ClCompile Include="src\Skribble\Debug.cpp">
       <Filter>Skribble</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skribble\Layer.cpp">
+      <Filter>Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\LayerStack.cpp">
+      <Filter>Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\skpch.cpp" />
   </ItemGroup>
 </Project>
