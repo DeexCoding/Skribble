@@ -28,6 +28,9 @@
     <ClInclude Include="src\Skribble\Debug.h">
       <Filter>Skribble</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skribble\Entry.h">
+      <Filter>Skribble</Filter>
+    </ClInclude>
     <ClInclude Include="src\Skribble\Events\ApplicationEvent.h">
       <Filter>Skribble\Events</Filter>
     </ClInclude>
@@ -50,7 +53,6 @@
       <Filter>Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\skpch.h" />
-    <ClInclude Include="src\Skribble\Entry.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">

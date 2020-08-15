@@ -1,2 +1,10 @@
-[20:33:04] [trace] SKRIBBLE: Hello
-[20:34:26] [trace] SKRIBBLE: WindowClose
+[10:52:53] [trace] SKRIBBLE: Hello
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 505, 0
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 570, 4
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 580, 4
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 589, 4
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 598, 4
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 607, 3
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 616, 2
+[10:53:06] [trace] SKRIBBLE: MouseMovedEvent : 624, 0
+[10:53:07] [trace] SKRIBBLE: WindowClose

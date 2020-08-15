@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependecies", "Dependecies", "{C5F8F5E2-310F-F478-7A86-7F9AE6DBC400}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "Skribble\vendor\GLFW\GLFW.vcxproj", "{154B857C-0182-860D-AA6E-6C109684020F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Glad", "Skribble\vendor\GLAD\Glad.vcxproj", "{BDD6857C-A90D-870D-52FA-6C103E10030F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{7FA9857C-6BE0-860D-14CD-6C1000E3020F}"
 EndProject
@@ -20,6 +24,12 @@ Global
 		{154B857C-0182-860D-AA6E-6C109684020F}.Distribution|x64.Build.0 = Distribution|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.Relese|x64.ActiveCfg = Relese|x64
 		{154B857C-0182-860D-AA6E-6C109684020F}.Relese|x64.Build.0 = Relese|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Debug|x64.ActiveCfg = Debug|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Debug|x64.Build.0 = Debug|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Distribution|x64.ActiveCfg = Distribution|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Distribution|x64.Build.0 = Distribution|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Relese|x64.ActiveCfg = Relese|x64
+		{BDD6857C-A90D-870D-52FA-6C103E10030F}.Relese|x64.Build.0 = Relese|x64
 		{7FA9857C-6BE0-860D-14CD-6C1000E3020F}.Debug|x64.ActiveCfg = Debug|x64
 		{7FA9857C-6BE0-860D-14CD-6C1000E3020F}.Debug|x64.Build.0 = Debug|x64
 		{7FA9857C-6BE0-860D-14CD-6C1000E3020F}.Distribution|x64.ActiveCfg = Distribution|x64
@@ -35,5 +45,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{154B857C-0182-860D-AA6E-6C109684020F} = {C5F8F5E2-310F-F478-7A86-7F9AE6DBC400}
+		{BDD6857C-A90D-870D-52FA-6C103E10030F} = {C5F8F5E2-310F-F478-7A86-7F9AE6DBC400}
 	EndGlobalSection
 EndGlobal

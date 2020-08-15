@@ -1,5 +1,5 @@
 workspace "Skribble"
-	architecture "x86_x64"
+	architecture "x86_64"
 
 	configurations
 	{
@@ -12,9 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Skribble/vendor/GLFW/include"
+IncludeDir["GLAD"] = "Skribble/vendor/GLAD/include"
 
 group "Dependecies"
 include "Skribble/vendor/GLFW"
+include "Skribble/vendor/GLAD"
 group ""
 
 project "Skribble"
@@ -38,12 +40,14 @@ project "Skribble"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLAD}"
 	}
 
 	links
 	{
 		"GLFW",
+		"GLAD",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,8 @@ project "Skribble"
 		defines
 		{
 			"SKRIBBLE_WINDOWS",
-			"SKRIBBLE_DLL"
+			"SKRIBBLE_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

@@ -8,6 +8,8 @@
 #include "Skribble/Events/KeyEvent.h"
 #include "Skribble/Events/MouseEvent.h"
 
+#include <GLAD/glad.h>
+
 namespace Skribble
 {
 	static bool glfwInitalized = false;
@@ -41,7 +43,7 @@ namespace Skribble
 		if (!glfwInitalized)
 		{
 			int success = glfwInit();
-			SKRIBBLE_CORE_ASSERT(success, "Could not initalize GLFW!");
+			SKRIBBLE_CORE_ASSERT(success, "Couldn't initalize GLFW!");
 
 			glfwSetErrorCallback(GLFWError);
 
@@ -50,6 +52,8 @@ namespace Skribble
 
 		window = glfwCreateWindow((int)propeties.width, (int)propeties.height, data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
+		int glad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		SKRIBBLE_CORE_ASSERT(status, "Couldn't initalize GLAD!");
 		glfwSetWindowUserPointer(window, &data);
 		SetVSync(false); //TODO : Set it to an auctal vsync variable
 
