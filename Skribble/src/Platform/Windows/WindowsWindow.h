@@ -22,6 +22,8 @@ namespace Skribble
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
+		inline virtual void* GetNativeWindow() const { return window; }
+
 	private:
 		virtual void Initalize(const WindowPropeties& _propeties);
 		virtual void Shutdown();

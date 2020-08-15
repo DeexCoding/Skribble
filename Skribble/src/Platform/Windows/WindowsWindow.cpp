@@ -84,14 +84,14 @@ namespace Skribble
 
 				switch (_action)
 				{
-					case GLFW_PRESS:
+					case SKRIBBLE_PRESS:
 					{
 						KeyPressedEvent _event(_key, 0);
 						_data.callback(_event);
 						break;
 					}
 
-					case GLFW_REPEAT:
+					case SKRIBBLE_REPEAT:
 					{
 						//TODO : Extract repeat count
 						KeyPressedEvent _event(_key, 1);
@@ -99,7 +99,7 @@ namespace Skribble
 						break;
 					}
 
-					case GLFW_RELEASE:
+					case SKRIBBLE_RELEASE:
 					{
 						KeyRelesedEvent _event(_key);
 						_data.callback(_event);
@@ -114,14 +114,14 @@ namespace Skribble
 
 				switch (_action)
 				{
-					case GLFW_PRESS:
+					case SKRIBBLE_PRESS:
 					{
 						MouseButtonPressedEvent _event(_button);
 						_data.callback(_event);
 						break;
 					}
 
-					case GLFW_RELEASE:
+					case SKRIBBLE_RELEASE:
 					{
 						MouseButtonRelesedEvent _event(_button);
 						_data.callback(_event);

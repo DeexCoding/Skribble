@@ -23,7 +23,12 @@ namespace Skribble
 		void PushLayer(Layer* _layer);
 		void PushOverlay(Layer* _layer);
 
+		static Application& Get() { return *instance; }
+		Window& GetWindow() { return *window; }
+
 	private:
+		static Application* instance;
+
 		bool OnWindowClosed(WindowCloseEvent& _event);
 
 		bool running = false;
