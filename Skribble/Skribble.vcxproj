@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Skribble.h" />
     <ClInclude Include="src\Skribble\Application.h" />
@@ -162,12 +163,16 @@
     <ClInclude Include="src\Skribble\Events\Event.h" />
     <ClInclude Include="src\Skribble\Events\KeyEvent.h" />
     <ClInclude Include="src\Skribble\Events\MouseEvent.h" />
+    <ClInclude Include="src\Skribble\Input.h" />
+    <ClInclude Include="src\Skribble\Keycode.h" />
     <ClInclude Include="src\Skribble\Layer.h" />
     <ClInclude Include="src\Skribble\LayerStack.h" />
+    <ClInclude Include="src\Skribble\Mousecode.h" />
     <ClInclude Include="src\Skribble\Window.h" />
     <ClInclude Include="src\skpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Skribble\Application.cpp" />
     <ClCompile Include="src\Skribble\Debug.cpp" />

@@ -53,6 +53,10 @@
       <Filter>Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\skpch.h" />
+    <ClInclude Include="src\Skribble\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Skribble\Keycode.h" />
+    <ClInclude Include="src\Skribble\Mousecode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
@@ -71,5 +75,6 @@
       <Filter>Skribble</Filter>
     </ClCompile>
     <ClCompile Include="src\skpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

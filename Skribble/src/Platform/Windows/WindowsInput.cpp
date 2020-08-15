@@ -15,7 +15,7 @@ namespace Skribble
 
 		auto state =  glfwGetKey(window, _keycode);
 
-		return state == SKRIBBLE_PRESS;
+		return state == GLFW_PRESS;
 	}
 
 	bool WindowsInput::GetKeyHold(int _keycode)
@@ -24,7 +24,7 @@ namespace Skribble
 
 		auto state = glfwGetKey(window, _keycode);
 
-		return state == SKRIBBLE_REPEAT;
+		return state == GLFW_REPEAT;
 	}
 
 	bool WindowsInput::GetKeyUp(int _keycode)
@@ -33,7 +33,7 @@ namespace Skribble
 
 		auto state = glfwGetKey(window, _keycode);
 
-		return state == SKRIBBLE_RELEASE;
+		return state == GLFW_RELEASE;
 	}
 
 	bool WindowsInput::GetMouseButtonPress(int _button)
@@ -42,7 +42,7 @@ namespace Skribble
 
 		auto state = glfwGetMouseButton(window, _button);
 
-		return state == SKRIBBLE_PRESS;
+		return state == GLFW_PRESS;
 	}
 
 	bool WindowsInput::GetMouseButtonHold(int _button)
@@ -51,7 +51,7 @@ namespace Skribble
 
 		auto state = glfwGetMouseButton(window, _button);
 
-		return state == SKRIBBLE_REPEAT;
+		return state == GLFW_REPEAT;
 	}
 		
 	bool WindowsInput::GetMouseButtonUp(int _button)
@@ -60,7 +60,7 @@ namespace Skribble
 
 		auto state = glfwGetMouseButton(window, _button);
 
-		return state == SKRIBBLE_RELEASE;
+		return state == GLFW_RELEASE;
 	}
 
 	//TODO: Return mouse position as a float2
