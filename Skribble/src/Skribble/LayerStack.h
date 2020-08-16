@@ -7,7 +7,7 @@
 
 namespace Skribble
 {
-	class SKRIBBLE_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack() = default;
@@ -24,6 +24,6 @@ namespace Skribble
 		
 	private:
 		std::vector<Layer*> layers;
-		std::vector<Layer*>::iterator layerInsert;
+		unsigned int layerInsert = 0;
 	};
 }

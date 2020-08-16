@@ -9,7 +9,7 @@
 
 namespace Skribble
 {
-	class SKRIBBLE_API Application
+	class Application
 	{
 	public:
 		Application();

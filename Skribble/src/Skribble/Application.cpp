@@ -11,7 +11,7 @@ namespace Skribble
 
 		instance = this;
 
-		window = std::unique_ptr<Window>(Window::Create());
+		window = std::unique_ptr<Window>(Window::Create(WindowPropeties("Skribble", 1080, 720)));
 		window->SetEventCallback(BIND_EVENTFUNCTION(Application::OnEvent));
 	}
 
@@ -51,8 +51,6 @@ namespace Skribble
 	{
 		EventDispatcher _dispatcher(_event);
 		_dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENTFUNCTION(Application::OnWindowClosed));
-
-		SKRIBBLE_CORE_TRACE("{0}", _event);
 
 		for (auto it = layerStack.end(); it != layerStack.begin(); )
 		{

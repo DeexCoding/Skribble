@@ -4,3 +4,6 @@
 [submodule "Skribble/vendor/GLFW"]
 	path = Skribble/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Skribble/vendor/glm"]
+	path = Skribble/vendor/glm
+	url = https://github.com/g-truc/glm

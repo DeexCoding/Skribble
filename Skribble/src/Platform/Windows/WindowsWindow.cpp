@@ -53,7 +53,7 @@ namespace Skribble
 		window = glfwCreateWindow((int)propeties.width, (int)propeties.height, data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
 		int glad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		SKRIBBLE_CORE_ASSERT(status, "Couldn't initalize GLAD!");
+		SKRIBBLE_CORE_ASSERT(glad, "Couldn't initalize Glad!");
 		glfwSetWindowUserPointer(window, &data);
 		SetVSync(false); //TODO : Set it to an auctal vsync variable
 

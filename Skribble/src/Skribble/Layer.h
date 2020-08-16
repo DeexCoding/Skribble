@@ -5,7 +5,7 @@
 
 namespace Skribble
 {
-	class SKRIBBLE_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& _name = "New layer");

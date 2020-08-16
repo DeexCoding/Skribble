@@ -6,7 +6,7 @@
 
 namespace Skribble
 {
-	class  WindowsWindow : public Window
+	class WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowPropeties& _propeties);

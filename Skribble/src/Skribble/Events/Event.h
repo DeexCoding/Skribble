@@ -9,7 +9,7 @@ namespace Skribble
 
 	//TODO: Make events much simpler : Not make them entire classes, maybe make them just functions or lambdas
 
-	enum  class EventType
+	enum class EventType
 	{
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMove,

@@ -2,6 +2,8 @@
 
 #include "Skribble/Input.h"
 
+#include "glm/vec2.hpp"
+
 namespace Skribble
 {
 	class WindowsInput : public Input
@@ -15,8 +17,7 @@ namespace Skribble
 		virtual bool GetMouseButtonHold(int _button) override;
 		virtual bool GetMouseButtonUp(int _button) override;
 
-		virtual float GetMouseX() override;
-		virtual float GetMouseY() override;
+		virtual glm::vec2 GetMousePosition() override;
 
 	};
 }

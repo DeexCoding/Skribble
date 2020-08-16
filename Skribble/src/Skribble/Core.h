@@ -25,17 +25,6 @@
 #error "Unknown platform!"
 #endif
 
-//DLL
-#ifdef SKRIBBLE_WINDOWS
-	#ifdef SKRIBBLE_DLL
-		#define SKRIBBLE_API __declspec(dllexport)
-	#else
-		#define SKRIBBLE_API __declspec(dllimport)
-	#endif
-#else
-	#error Skribble only supports Windows!
-#endif
-
 //Debug
 
 #ifdef SKRIBBLE_DEBUG
@@ -59,6 +48,9 @@
 #define SKRIBBLE_ASSERT(x, ...)
 #define SKRIBBLE_CORE_ASSERT(x, ...)
 #endif
+
+#define SKRIBBLE_DISABLE 0
+#define SKRIBBLE_ENABLE 1
 
 #define BSR(x) (1 << x)
 #define BSL(x) (1 >> x)

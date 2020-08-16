@@ -5,6 +5,8 @@
 #include "Skribble/Core.h"
 #include "Skribble/Events/Event.h"
 
+#include "glm/vec2.hpp"
+
 namespace Skribble
 {
 	//Only for desktop systems
@@ -20,7 +22,7 @@ namespace Skribble
 
 	};
 
-	class SKRIBBLE_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFunction = std::function<void(Event&)>;

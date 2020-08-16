@@ -4,7 +4,7 @@ workspace "Skribble"
 	configurations
 	{
 		"Debug",
-		"Relese",
+		"Release",
 		"Distribution"
 	}
 
@@ -13,6 +13,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Skribble/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Skribble/vendor/GLAD/include"
+IncludeDir["glm"] = "Skribble/vendor/glm"
 
 group "Dependecies"
 include "Skribble/vendor/GLFW"
@@ -21,8 +22,10 @@ group ""
 
 project "Skribble"
 	location "Skribble"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -33,7 +36,14 @@ project "Skribble"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
@@ -41,7 +51,8 @@ project "Skribble"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.GLAD}"
+		"%{IncludeDir.GLAD}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -52,41 +63,35 @@ project "Skribble"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "on"
 		systemversion "latest"
 
 		defines
 		{
-			"SKRIBBLE_WINDOWS",
-			"SKRIBBLE_DLL",
-			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Game")
+			"SKRIBBLE_WINDOWS"
 		}
 
 	filter "configurations:Debug"
 		defines "SKRIBBLE_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
-	filter "configurations:Relese"
+	filter "configurations:Release"
 		defines "SKRIBBLE_RELESE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Distribution"
 		defines "SKRIBBLE_DISTRIBUTION"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 project "Game"
 	location "Game"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -100,7 +105,8 @@ project "Game"
 	includedirs
 	{
 		"Skribble/vendor/spdlog/include",
-		"Skribble/src"
+		"Skribble/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -109,26 +115,19 @@ project "Game"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
-
-		defines
-		{
-			"SKRIBBLE_WINDOWS"
-		}
-
+		
 	filter "configurations:Debug"
 		defines "SKRIBBLE_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
-	filter "configurations:Relese"
+	filter "configurations:Release"
 		defines "SKRIBBLE_RELESE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Distribution"
 		defines "SKRIBBLE_DISTRIBUTION"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"

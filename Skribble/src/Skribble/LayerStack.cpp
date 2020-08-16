@@ -15,7 +15,8 @@ namespace Skribble
 	void LayerStack::PushLayer(Layer* _layer)
 	{
 		_layer->OnAttach();
-		layerInsert = layers.emplace(layerInsert, _layer);
+		layers.emplace(layers.begin() + layerInsert, _layer);
+		layerInsert++;
 	}
 
 	void LayerStack::PullLayer(Layer* _layer)

@@ -4,7 +4,6 @@
 #include "GLFW/glfw3.h"
 #include "Skribble/Application.h"
 
-//
 namespace Skribble
 {
 	Input* Input::instance = new WindowsInput();
@@ -63,24 +62,13 @@ namespace Skribble
 		return state == GLFW_RELEASE;
 	}
 
-	//TODO: Return mouse position as a float2
-	float WindowsInput::GetMouseX()
+	glm::vec2 WindowsInput::GetMousePosition()
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
 		double x, y;
 		glfwGetCursorPos(window, &x, &y);
 
-		return x;
-	}
-
-	float WindowsInput::GetMouseY()
-	{
-		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-
-		double x, y;
-		glfwGetCursorPos(window, &x, &y);
-
-		return y;
+		return glm::vec2((float)x, (float)y);
 	}
 }

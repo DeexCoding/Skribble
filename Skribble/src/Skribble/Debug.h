@@ -7,7 +7,7 @@
 
 namespace Skribble
 {
-	class SKRIBBLE_API Debug
+	class Debug
 	{
 	public:
 
