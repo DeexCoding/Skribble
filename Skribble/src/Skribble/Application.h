@@ -6,6 +6,11 @@
 #include "Events/ApplicationEvent.h"
 #include "Window.h"
 #include "Skribble/LayerStack.h"
+#include "Render/Shader.h"
+#include "Render/VertexBuffer.h"
+#include "Render/IndexBuffer.h"
+#include "Render/BufferLayout.h"
+#include "Render/VertexArray.h"
 
 namespace Skribble
 {
@@ -34,6 +39,9 @@ namespace Skribble
 		bool running = false;
 		std::unique_ptr<Window> window;
 		LayerStack layerStack;
+
+		Ref<Shader> shader;
+		Ref<VertexArray> vertexArray;
 	};
 
 	//Define in CLIENT

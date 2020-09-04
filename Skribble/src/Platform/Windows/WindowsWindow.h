@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Skribble/Window.h"
+#include "Skribble/Render/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -29,6 +30,8 @@ namespace Skribble
 		virtual void Shutdown();
 
 		GLFWwindow* window;
+
+		GrphicsContext* context;
 
 		struct WindowData
 		{

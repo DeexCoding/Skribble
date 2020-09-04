@@ -2,28 +2,45 @@
 
 #include <memory>
 
+#define SKRIBBLE_DISABLE 0
+#define SKRIBBLE_ENABLE 1
+
 //Platforms
+
 #ifdef _WIN64
-#ifndef SKRIBBLE_WINDOWS
-#define SKRIBBLE_WINDOWS
-#endif 
-#elif
-#error "32bit is not supported!"
+	#ifndef SKRIBBLE_WINDOWS
+		#define SKRIBBLE_WINDOWS
+	#endif 
+#elif _WIN32
+	#error "32bit is not supported!"
 #elif defined(__APPLE__) || defined(__MACH__)
-#if TARGET_OS_MAC == 1
-#ifndef SKRIBBLE_MAC
-#define SKRIBBLE_MAC
-#endif 
-#error "Mac is not supported!"
-#endif
+	#include <TargetConditionals.h>
+
+	#if TARGET_IPHONE_SIMULATOR == SKRIBBLE_ENABLE
+		#error "IOS simulator is not supported!"
+	#elif TARGET_OS_IPHONE == SKRIBBLE_ENABLE
+	#error "IOS is not supported"
+	#elif TARGET_OS_MAC == SKRIBBLE_ENABLE
+		#ifndef SKRIBBLE_MAC
+			#define SKRIBBLE_MAC
+		#endif
+		#error "Mac is not supported!"
+	#endif
+#elif defiend (__andorid__)
+	#ifndef SKRIBBLE_ANDROID
+		#define SKRIBBLE_ANDROID
+	#endif 
+	#error "Linux is not supported!"
 #elif defined (__linux__)
-#ifndef SKRIBBLE_LINUX
-#define SKRIBBLE_LINUX
-#endif 
-#error "Linux is not supported!"
+	#ifndef SKRIBBLE_LINUX
+		#define SKRIBBLE_LINUX
+	#endif 
+	#error "Linux is not supported!"
 #else
-#error "Unknown platform!"
+	#error "Unknown platform!"
 #endif
+
+//
 
 //Debug
 
@@ -49,8 +66,7 @@
 #define SKRIBBLE_CORE_ASSERT(x, ...)
 #endif
 
-#define SKRIBBLE_DISABLE 0
-#define SKRIBBLE_ENABLE 1
+//
 
 #define BSR(x) (1 << x)
 #define BSL(x) (1 >> x)

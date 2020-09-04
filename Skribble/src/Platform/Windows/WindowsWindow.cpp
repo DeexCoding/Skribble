@@ -8,8 +8,11 @@
 #include "Skribble/Events/KeyEvent.h"
 #include "Skribble/Events/MouseEvent.h"
 
+#include "Platform/OpenGL/GLContext.h"
+
 #include <GLAD/glad.h>
 
+//
 namespace Skribble
 {
 	static bool glfwInitalized = false;
@@ -51,12 +54,14 @@ namespace Skribble
 		}
 
 		window = glfwCreateWindow((int)propeties.width, (int)propeties.height, data.title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(window);
-		int glad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		SKRIBBLE_CORE_ASSERT(glad, "Couldn't initalize Glad!");
-		glfwSetWindowUserPointer(window, &data);
-		SetVSync(false); //TODO : Set it to an auctal vsync variable
+		
+		context = new GLContext(window);
+		
+		context->Initalize();
 
+		glfwSetWindowUserPointer(window, &data);
+
+		SetVSync(false); //TODO : Set it to an auctal vsync variable
 
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* _window, int _width, int _height)
 			{
@@ -153,7 +158,8 @@ namespace Skribble
 	void WindowsWindow::Update()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(window);
+
+		context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
