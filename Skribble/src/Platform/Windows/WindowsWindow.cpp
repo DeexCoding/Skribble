@@ -12,6 +12,8 @@
 
 #include <GLAD/glad.h>
 
+#ifdef SKRIBBLE_WINDOWS
+
 //
 namespace Skribble
 {
@@ -180,3 +182,5 @@ namespace Skribble
 		glfwDestroyWindow(window);
 	}
 }
+
+#endif

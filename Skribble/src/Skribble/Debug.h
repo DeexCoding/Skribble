@@ -2,8 +2,12 @@
 
 #include "Core.h"
 
+#pragma warning(push, 0)
+
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
+
+#pragma warning(pop)
 
 namespace Skribble
 {
@@ -28,11 +32,11 @@ namespace Skribble
 #define SKRIBBLE_CORE_INFO(...)    ::Skribble::Debug::GetCoreLogger()->info(__VA_ARGS__)
 #define SKRIBBLE_CORE_WARNING(...) ::Skribble::Debug::GetCoreLogger()->warn(__VA_ARGS__)
 #define SKRIBBLE_CORE_ERROR(...)   ::Skribble::Debug::GetCoreLogger()->error(__VA_ARGS__)
-#define SKRIBBLE_CORE_FATAL(...)   ::Skribble::Debug::GetCoreLogger()->fatal(__VA_ARGS__)
+#define SKRIBBLE_CORE_CRITICAL(...)   ::Skribble::Debug::GetCoreLogger()->critical(__VA_ARGS__)
 
 //Client logs
 #define SKRIBBLE_TRACE(...)        ::Skribble::Debug::GetClientLogger()->trace(__VA_ARGS__)
 #define SKRIBBLE_INFO(...)         ::Skribble::Debug::GetClientLogger()->info(__VA_ARGS__)
 #define SKRIBBLE_WARNING(...)      ::Skribble::Debug::GetClientLogger()->warn(__VA_ARGS__)
 #define SKRIBBLE_ERROR(...)        ::Skribble::Debug::GetClientLogger()->error(__VA_ARGS__)
-#define SKRIBBLE_FATAL(...)        ::Skribble::Debug::GetClientLogger()->fatal(__VA_ARGS__)
+#define SKRIBBLE_CRITICAL(...)        ::Skribble::Debug::GetClientLogger()->critical(__VA_ARGS__)

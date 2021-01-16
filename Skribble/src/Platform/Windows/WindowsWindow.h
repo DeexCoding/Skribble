@@ -5,6 +5,8 @@
 
 #include <GLFW/glfw3.h>
 
+#ifdef SKRIBBLE_WINDOWS
+
 namespace Skribble
 {
 	class WindowsWindow : public Window
@@ -45,3 +47,5 @@ namespace Skribble
 		WindowData data;
 	};
 }
+
+#endif

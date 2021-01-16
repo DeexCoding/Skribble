@@ -1,4 +1,5 @@
 #include "skpch.h"
+#include "Core.h"
 #include "Debug.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -18,12 +19,12 @@ namespace Skribble
 		logSinks[0]->set_pattern("%^[%T] %n: %v%$");
 		logSinks[1]->set_pattern("[%T] [%l] %n: %v");
 
-		coreLogger = CreateRef<spdlog::logger>("SKRIBBLE", begin(logSinks), end(logSinks));
+		coreLogger = std::make_shared<spdlog::logger>("SKRIBBLE", begin(logSinks), end(logSinks));
 		spdlog::register_logger(coreLogger);
 		coreLogger->set_level(spdlog::level::trace);
 		coreLogger->flush_on(spdlog::level::trace);
 
-		clientLogger = CreateRef<spdlog::logger>("GAME", begin(logSinks), end(logSinks));
+		clientLogger = std::make_shared<spdlog::logger>("GAME", begin(logSinks), end(logSinks));
 		spdlog::register_logger(clientLogger);
 		clientLogger->set_level(spdlog::level::trace);
 		clientLogger->flush_on(spdlog::level::trace);

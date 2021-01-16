@@ -11,6 +11,7 @@
 #include "Render/IndexBuffer.h"
 #include "Render/BufferLayout.h"
 #include "Render/VertexArray.h"
+#include "Skribble/Render/Camera.h"
 
 namespace Skribble
 {
@@ -40,8 +41,7 @@ namespace Skribble
 		std::unique_ptr<Window> window;
 		LayerStack layerStack;
 
-		Ref<Shader> shader;
-		Ref<VertexArray> vertexArray;
+		float lastFrameTime = 0.0f;
 	};
 
 	//Define in CLIENT

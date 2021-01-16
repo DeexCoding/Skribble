@@ -11,7 +11,7 @@
 	#ifndef SKRIBBLE_WINDOWS
 		#define SKRIBBLE_WINDOWS
 	#endif 
-#elif _WIN32
+#elif defined(_WIN32)
 	#error "32bit is not supported!"
 #elif defined(__APPLE__) || defined(__MACH__)
 	#include <TargetConditionals.h>
@@ -75,6 +75,14 @@
 
 namespace Skribble
 {
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+	template<typename T, typename ... Args>
+	constexpr Scope<T> CreateScope(Args&& ... args)
+	{
+		return std::make_unique<T>(std::forward<Args>(args)...);
+	}
+
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
 	template<typename T, typename ... Args>
