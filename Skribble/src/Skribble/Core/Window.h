@@ -2,7 +2,7 @@
 
 #include "skpch.h"
 
-#include "Skribble/Core.h"
+#include "Skribble/Core/Core.h"
 #include "Skribble/Events/Event.h"
 
 #include "glm/vec2.hpp"
@@ -40,6 +40,6 @@ namespace Skribble
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowPropeties& _propeties = WindowPropeties());
+		static Scope<Window> Create(const WindowPropeties& _propeties = WindowPropeties());
 	};
 }

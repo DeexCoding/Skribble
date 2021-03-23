@@ -14,10 +14,10 @@ namespace Skribble
 		~LayerStack();
 
 		void PushLayer(Layer* _layer);
-		void PullLayer(Layer* _layer);
+		void PopLayer(Layer* _layer);
 
 		void PushOverlay(Layer* overlay);
-		void PullOverlay(Layer* overlay);
+		void PopOverlay(Layer* overlay);
 
 		std::vector<Layer*>::iterator begin() { return layers.begin(); }
 		std::vector<Layer*>::iterator end() { return layers.end(); }

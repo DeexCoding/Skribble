@@ -2,7 +2,7 @@
 
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
-#include "Skribble/Core.h"
+#include "Skribble/Core/Core.h"
 
 namespace Skribble
 {
@@ -20,6 +20,6 @@ namespace Skribble
 		virtual const std::vector<Ref<VertexBuffer>> GetVertexBuffers() const = 0;
 		virtual const Ref<IndexBuffer> GetIndexBuffer() const = 0;
 
-		static VertexArray* Create();
+		static Ref<VertexArray> Create();
 	};
 }

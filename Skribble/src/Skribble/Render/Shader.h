@@ -20,6 +20,7 @@ namespace Skribble
 		static Ref<Shader> Create(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 
 		virtual void SetInt(const std::string& name, const int& value) = 0;
+		virtual void SetIntArray(const std::string& name, int* values, uint32_t count) = 0;
 
 		virtual void SetFloat(const std::string& name, float value) = 0;
 		virtual void SetFloat2(const std::string& name, const glm::vec2& values) = 0;

@@ -1,6 +1,6 @@
 #include "skpch.h"
 
-#include "Skribble/Time.h"
+#include "Skribble/Core/Time.h"
 
 #include <GLFW/glfw3.h>
 

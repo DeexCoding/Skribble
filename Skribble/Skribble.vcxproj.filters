@@ -75,16 +75,7 @@
     <ClInclude Include="src\Skribble.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Application.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Core.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Debug.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Entry.h">
+    <ClInclude Include="src\Skribble\CameraController.h">
       <Filter>src\Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Events\ApplicationEvent.h">
@@ -98,21 +89,6 @@
     </ClInclude>
     <ClInclude Include="src\Skribble\Events\MouseEvent.h">
       <Filter>src\Skribble\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Input.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Keycode.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Layer.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\LayerStack.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Mousecode.h">
-      <Filter>src\Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Render\BufferLayout.h">
       <Filter>src\Skribble\Render</Filter>
@@ -143,12 +119,6 @@
     </ClInclude>
     <ClInclude Include="src\Skribble\Render\VertexBuffer.h">
       <Filter>src\Skribble\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Time.h">
-      <Filter>src\Skribble</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Skribble\Window.h">
-      <Filter>src\Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\skpch.h">
       <Filter>src</Filter>
@@ -1380,6 +1350,45 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Core.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Debug.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Entry.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Input.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Keycode.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Layer.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\LayerStack.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Mousecode.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Time.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Window.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Core\Application.h">
+      <Filter>src\Skribble</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Debug\Instrumentor.h" />
+    <ClInclude Include="src\Skribble\Render\Batch2D.h" />
+    <ClInclude Include="src\Skribble\Core\Random.h" />
+    <ClInclude Include="src\Skribble\Core\Color.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLWindow.h" />
+    <ClInclude Include="src\Platform\DirectX\DXContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp">
@@ -1412,16 +1421,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Skribble\Application.cpp">
-      <Filter>src\Skribble</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Skribble\Debug.cpp">
-      <Filter>src\Skribble</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Skribble\Layer.cpp">
-      <Filter>src\Skribble</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Skribble\LayerStack.cpp">
+    <ClCompile Include="src\Skribble\CameraController.cpp">
       <Filter>src\Skribble</Filter>
     </ClCompile>
     <ClCompile Include="src\Skribble\Render\Buffer.cpp">
@@ -1445,14 +1445,31 @@
     <ClCompile Include="src\Skribble\Render\VertexArray.cpp">
       <Filter>src\Skribble\Render</Filter>
     </ClCompile>
-    <ClCompile Include="src\Skribble\Time.cpp">
-      <Filter>src\Skribble</Filter>
-    </ClCompile>
     <ClCompile Include="src\skpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Skribble\Core\Debug.cpp">
+      <Filter>src\Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Core\Layer.cpp">
+      <Filter>src\Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Core\LayerStack.cpp">
+      <Filter>src\Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Core\Time.cpp">
+      <Filter>src\Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Core\Application.cpp">
+      <Filter>src\Skribble</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Core\Window.cpp" />
+    <ClCompile Include="src\Skribble\Render\Batch2D.cpp" />
+    <ClCompile Include="src\Skribble\Core\Random.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLWindow.cpp" />
+    <ClCompile Include="src\Platform\DirectX\DXContext.cpp" />
   </ItemGroup>
 </Project>

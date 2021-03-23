@@ -15,6 +15,8 @@ namespace Skribble
 		float GetRotation() const { return rotation; }
 		void SetRotation(float _rotation) { rotation = _rotation; RecalculateView(); }
 
+		void SetProjection(float _left, float _right, float _bottom, float _top);
+
 		const glm::mat4& GetProjectionMatrix() const { return projectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return viewMatrix; }
 		const glm::mat4& GetViewProjectionMatrix() const { return viewProjectionMatrix; }

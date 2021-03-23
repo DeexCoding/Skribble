@@ -7,6 +7,7 @@ namespace Skribble
 	class GLVertexBuffer : public VertexBuffer
 	{
 	public:
+		GLVertexBuffer(uint32_t size);
 		GLVertexBuffer(float* vertices, uint32_t size);
 		virtual ~GLVertexBuffer();
 
@@ -15,6 +16,8 @@ namespace Skribble
 
 		virtual const BufferLayout& GetLayout() const override { return layout; }
 		virtual void SetLayout(const BufferLayout _layout) override { layout = _layout; }
+
+		virtual void SetData(void* data, uint32_t size) override;
 
 	private:
 		uint32_t rendererID;

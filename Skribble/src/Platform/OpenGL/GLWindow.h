@@ -5,24 +5,15 @@
 
 #ifdef SKRIBBLE_WINDOWS
 
-#include <Windows.h>
+#include <GLFW/glfw3.h>
 
 namespace Skribble
 {
-	struct WindowData
-	{
-		std::string title;
-		unsigned width, height;
-		bool vSync;
-
-		Window::EventCallbackFunction callback;
-	};
-
-	class WindowsWindow : public Window
+	class GLWindow : public Window
 	{
 	public:
-		WindowsWindow(const WindowPropeties& _propeties);
-		virtual ~WindowsWindow();
+		GLWindow(const WindowPropeties& _propeties);
+		virtual ~GLWindow();
 
 		void Update() override;
 
@@ -40,9 +31,18 @@ namespace Skribble
 		virtual void Initalize(const WindowPropeties& _propeties);
 		virtual void Shutdown();
 
-		HWND* window;
+		GLFWwindow* window;
 
 		GrphicsContext* context;
+
+		struct WindowData
+		{
+			std::string title;
+			unsigned width, height;
+			bool vSync;
+
+			EventCallbackFunction callback;
+		};
 
 		WindowData data;
 	};

@@ -1,8 +1,8 @@
 #include "skpch.h"
-#include "Skribble/Input.h"
+#include "Skribble/Core/Input.h"
 
 #include "GLFW/glfw3.h"
-#include "Skribble/Application.h"
+#include "Skribble/Core/Application.h"
 
 #ifdef SKRIBBLE_WINDOWS
 

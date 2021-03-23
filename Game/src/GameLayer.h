@@ -2,6 +2,8 @@
 
 #include "Skribble.h"
 
+#include <vector>
+
 class GameLayer : public Skribble::Layer
 {
 public:
@@ -15,16 +17,11 @@ public:
 
 	void OnEvent(Skribble::Event& _event) override;
 
+	bool OnWindowResize(Skribble::WindowResizeEvent& e);
+
 private:
-	Skribble::ShaderLibrary shaderLibrary;
-
-	Skribble::Ref<Skribble::Shader> flatColorShader;
-	Skribble::Ref<Skribble::VertexArray> vertexArray;
-	Skribble::Ref<Skribble::Texture2D> gridTex;
-
-	Skribble::Camera camera;
+	Skribble::CameraController camera;
 
 	glm::vec3 cameraPosition;
 	glm::vec3 squarePosition;
-
 };

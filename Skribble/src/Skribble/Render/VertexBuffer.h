@@ -16,6 +16,9 @@ namespace Skribble
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout) = 0;
 
-		static VertexBuffer* Create(float* vertices, uint32_t size);
+		virtual void SetData(void* data, uint32_t size) = 0;
+
+		static Ref<VertexBuffer> Create(uint32_t size);
+		static Ref<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 }

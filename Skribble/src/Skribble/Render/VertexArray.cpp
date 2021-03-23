@@ -7,7 +7,7 @@
 
 namespace Skribble
 {
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -17,7 +17,7 @@ namespace Skribble
 #if SKRIBBLE_WINDOWS
 
 		case RenderAPIType::OpenGL:
-			return new GLVertexArray();
+			return CreateRef<GLVertexArray>();
 
 #endif
 		}

@@ -202,6 +202,11 @@ namespace Skribble
 		UploadUniformInt(name, value);
 	}
 
+	void GLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		UploadUniformIntArray(name, values, count);
+	}
+
 	void GLShader::SetFloat(const std::string& name, float value)
 	{
 		UploadUniformFloat(name, value);
@@ -236,6 +241,12 @@ namespace Skribble
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform1i(location, value);
+	}
+
+	void GLShader::UploadUniformIntArray(const std::string& name, int* values, uint32_t count)
+	{
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
+		glUniform1iv(location, count, values);
 	}
 
 	void GLShader::UploadUniformFloat(const std::string& name, float value)

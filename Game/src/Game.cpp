@@ -1,5 +1,5 @@
 #include <Skribble.h>
-#include <Skribble/Entry.h>
+#include <Skribble/Core/Entry.h>
 
 #include "GameLayer.h"
 

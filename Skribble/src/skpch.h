@@ -13,7 +13,10 @@
 #include <array>
 #include <vector>
 
-#include "Skribble/Debug.h"
+#include "Skribble/Core/Core.h"
+#include "Skribble/Core/Debug.h"
+
+#include "Skribble/Debug/Instrumentor.h"
 
 #ifdef  SKRIBBLE_WINDOWS
 #include <Windows.h>

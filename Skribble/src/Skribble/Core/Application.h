@@ -2,15 +2,15 @@
 
 #include "Core.h"
 #include "Core.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "../Events/Event.h"
+#include "../Events/ApplicationEvent.h"
 #include "Window.h"
-#include "Skribble/LayerStack.h"
-#include "Render/Shader.h"
-#include "Render/VertexBuffer.h"
-#include "Render/IndexBuffer.h"
-#include "Render/BufferLayout.h"
-#include "Render/VertexArray.h"
+#include "LayerStack.h"
+#include "../Render/Shader.h"
+#include "../Render/VertexBuffer.h"
+#include "../Render/IndexBuffer.h"
+#include "../Render/BufferLayout.h"
+#include "../Render/VertexArray.h"
 #include "Skribble/Render/Camera.h"
 
 namespace Skribble
@@ -35,8 +35,10 @@ namespace Skribble
 	private:
 		static Application* instance;
 
-		bool OnWindowClosed(WindowCloseEvent& _event);
+		bool OnWindowClosed(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
+		bool minimized = false;
 		bool running = false;
 		std::unique_ptr<Window> window;
 		LayerStack layerStack;

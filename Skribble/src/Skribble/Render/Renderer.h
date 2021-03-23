@@ -11,6 +11,8 @@ namespace Skribble
 	{
 	public:
 		static void Init();
+		
+		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void Begin(Camera& camera);
 		static void End();
@@ -25,9 +27,9 @@ namespace Skribble
 			api->Clear(color);
 		}
 
-		inline static void DrawIndexed(const Ref<VertexArray>& _vertexArray)
+		inline static void DrawIndexed(const Ref<VertexArray>& _vertexArray, uint32_t count = 0)
 		{
-			api->DrawIndexed(_vertexArray);
+			api->DrawIndexed(_vertexArray, count);
 		}
 
 	private:

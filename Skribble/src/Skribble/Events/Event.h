@@ -1,7 +1,8 @@
 #pragma once
+
 #include "skpch.h"
 
-#include "Skribble/Core.h"
+#include "Skribble/Core/Core.h"
 
 namespace Skribble
 {

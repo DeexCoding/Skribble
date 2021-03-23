@@ -28,6 +28,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\shaders\Texture.glsl" />
+    <Image Include="assets\textures\Default.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\DirectX\DXContext.h" />
     <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\GLIndexBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\GLRenderAPI.h" />
@@ -147,21 +148,27 @@
     <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\GLVertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\GLVertexBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Skribble.h" />
-    <ClInclude Include="src\Skribble\Application.h" />
-    <ClInclude Include="src\Skribble\Core.h" />
-    <ClInclude Include="src\Skribble\Debug.h" />
-    <ClInclude Include="src\Skribble\Entry.h" />
+    <ClInclude Include="src\Skribble\Core\Application.h" />
+    <ClInclude Include="src\Skribble\CameraController.h" />
+    <ClInclude Include="src\Skribble\Core\Color.h" />
+    <ClInclude Include="src\Skribble\Core\Core.h" />
+    <ClInclude Include="src\Skribble\Core\Debug.h" />
+    <ClInclude Include="src\Skribble\Core\Entry.h" />
+    <ClInclude Include="src\Skribble\Core\Random.h" />
+    <ClInclude Include="src\Skribble\Debug\Instrumentor.h" />
     <ClInclude Include="src\Skribble\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Skribble\Events\Event.h" />
     <ClInclude Include="src\Skribble\Events\KeyEvent.h" />
     <ClInclude Include="src\Skribble\Events\MouseEvent.h" />
-    <ClInclude Include="src\Skribble\Input.h" />
-    <ClInclude Include="src\Skribble\Keycode.h" />
-    <ClInclude Include="src\Skribble\Layer.h" />
-    <ClInclude Include="src\Skribble\LayerStack.h" />
-    <ClInclude Include="src\Skribble\Mousecode.h" />
+    <ClInclude Include="src\Skribble\Core\Input.h" />
+    <ClInclude Include="src\Skribble\Core\Keycode.h" />
+    <ClInclude Include="src\Skribble\Core\Layer.h" />
+    <ClInclude Include="src\Skribble\Core\LayerStack.h" />
+    <ClInclude Include="src\Skribble\Core\Mousecode.h" />
+    <ClInclude Include="src\Skribble\Render\Batch2D.h" />
     <ClInclude Include="src\Skribble\Render\BufferLayout.h" />
     <ClInclude Include="src\Skribble\Render\Camera.h" />
     <ClInclude Include="src\Skribble\Render\GraphicsContext.h" />
@@ -172,8 +179,8 @@
     <ClInclude Include="src\Skribble\Render\Texture.h" />
     <ClInclude Include="src\Skribble\Render\VertexArray.h" />
     <ClInclude Include="src\Skribble\Render\VertexBuffer.h" />
-    <ClInclude Include="src\Skribble\Time.h" />
-    <ClInclude Include="src\Skribble\Window.h" />
+    <ClInclude Include="src\Skribble\Core\Time.h" />
+    <ClInclude Include="src\Skribble\Core\Window.h" />
     <ClInclude Include="src\skpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -586,6 +593,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\DirectX\DXContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLIndexBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLRenderAPI.cpp" />
@@ -593,13 +601,18 @@
     <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLVertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLVertexBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLWindow.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsTime.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Skribble\Application.cpp" />
-    <ClCompile Include="src\Skribble\Debug.cpp" />
-    <ClCompile Include="src\Skribble\Layer.cpp" />
-    <ClCompile Include="src\Skribble\LayerStack.cpp" />
+    <ClCompile Include="src\Skribble\Core\Application.cpp" />
+    <ClCompile Include="src\Skribble\CameraController.cpp" />
+    <ClCompile Include="src\Skribble\Core\Debug.cpp" />
+    <ClCompile Include="src\Skribble\Core\Layer.cpp" />
+    <ClCompile Include="src\Skribble\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Skribble\Core\Random.cpp" />
+    <ClCompile Include="src\Skribble\Core\Window.cpp" />
+    <ClCompile Include="src\Skribble\Render\Batch2D.cpp" />
     <ClCompile Include="src\Skribble\Render\Buffer.cpp" />
     <ClCompile Include="src\Skribble\Render\Camera.cpp" />
     <ClCompile Include="src\Skribble\Render\RenderAPI.cpp" />
@@ -607,7 +620,7 @@
     <ClCompile Include="src\Skribble\Render\Shader.cpp" />
     <ClCompile Include="src\Skribble\Render\Texture.cpp" />
     <ClCompile Include="src\Skribble\Render\VertexArray.cpp" />
-    <ClCompile Include="src\Skribble\Time.cpp" />
+    <ClCompile Include="src\Skribble\Core\Time.cpp" />
     <ClCompile Include="src\skpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

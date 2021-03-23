@@ -14,6 +14,8 @@ namespace Skribble
 
 	Application::Application()
 	{
+		SKRIBBLE_PROFILE_SCOPE("Application::Application");
+
 		SKRIBBLE_CORE_ASSERT(!instance, "Application already exists!");
 
 		instance = this;
@@ -38,7 +40,10 @@ namespace Skribble
 			Time::Calculate(lastFrameTime);
 			lastFrameTime = Time::GetCurrentRealTime();
 
-			for (Layer* layer : layerStack) layer->Update();
+			if (!minimized)
+			{
+				for (Layer* layer : layerStack) layer->Update();
+			}
 
 			window->Update();
 		}
@@ -63,6 +68,7 @@ namespace Skribble
 	{
 		EventDispatcher _dispatcher(_event);
 		_dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENTFUNCTION(Application::OnWindowClosed));
+		_dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENTFUNCTION(Application::OnWindowResize));
 
 		for (auto it = layerStack.end(); it != layerStack.begin(); )
 		{
@@ -71,9 +77,24 @@ namespace Skribble
 		}
 	}
 
-	bool Application::OnWindowClosed(WindowCloseEvent& _event)
+	bool Application::OnWindowClosed(WindowCloseEvent& e)
 	{
 		Application::Quit();
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			minimized = true;
+			return false;
+		}
+
+		minimized = false;
+
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
+		return false;
 	}
 }

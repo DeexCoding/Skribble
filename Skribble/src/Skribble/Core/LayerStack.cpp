@@ -19,7 +19,7 @@ namespace Skribble
 		layerInsert++;
 	}
 
-	void LayerStack::PullLayer(Layer* _layer)
+	void LayerStack::PopLayer(Layer* _layer)
 	{
 		auto it = std::find(layers.begin(), layers.begin(), _layer);
 
@@ -37,7 +37,7 @@ namespace Skribble
 		layers.emplace_back(_overlay);
 	}
 
-	void LayerStack::PullOverlay(Layer* _overlay)
+	void LayerStack::PopOverlay(Layer* _overlay)
 	{
 		auto it = std::find(layers.begin(), layers.end(), _overlay);
 
@@ -53,7 +53,7 @@ namespace Skribble
 		//TODO
 	}
 
-	void LayerStack::Compare(Layer* _layer)
+	bool LayerStack::Compare(Layer* _layer)
 	{
 		//TODO
 	}*/

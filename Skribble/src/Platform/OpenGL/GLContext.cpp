@@ -13,6 +13,8 @@ namespace Skribble
 
 	void GLContext::Initalize()
 	{
+		SKRIBBLE_PROFILE_SCOPE("GLContext::Initalize");
+
 		glfwMakeContextCurrent(window);
 		int glad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		SKRIBBLE_CORE_ASSERT(glad, "Couldn't initalize Glad!");
@@ -20,6 +22,8 @@ namespace Skribble
 
 	void GLContext::SwapBuffers()
 	{
+		SKRIBBLE_PROFILE_SCOPE("GLContext::SwapBuffers");
+
 		glfwSwapBuffers(window);
 	}
 }

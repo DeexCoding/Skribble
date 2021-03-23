@@ -19,4 +19,10 @@ namespace Skribble
 		viewMatrix = glm::inverse(transform);
 		viewProjectionMatrix = projectionMatrix * viewMatrix;
 	}
+
+	void Camera::SetProjection(float _left, float _right, float _bottom, float _top)
+	{
+		projectionMatrix = glm::ortho(_left, _right, _bottom, _top, -1.0f, 1.0f);
+		viewProjectionMatrix = projectionMatrix * viewMatrix;
+	}
 }

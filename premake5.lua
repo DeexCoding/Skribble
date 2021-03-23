@@ -15,10 +15,12 @@ IncludeDir["GLFW"] = "Skribble/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Skribble/vendor/GLAD/include"
 IncludeDir["glm"] = "Skribble/vendor/glm"
 IncludeDir["stb_image"] = "Skribble/vendor/stb_image"
+IncludeDir["FreeType"] = "Skribble/vendor/FreeType/include"
 
 group "Dependecies"
 include "Skribble/vendor/GLFW"
 include "Skribble/vendor/GLAD"
+include "Skribble/vendor/FreeType"
 group ""
 
 project "Skribble"
@@ -41,7 +43,10 @@ project "Skribble"
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/FreeType/**.h",
+		"%{prj.name}/vendor/FreeType/**.c"
+
 	}
 
 	defines
@@ -56,7 +61,8 @@ project "Skribble"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLAD}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.FreeType}"
 	}
 
 	links
@@ -72,7 +78,6 @@ project "Skribble"
 
 		defines
 		{
-			"SKRIBBLE_WINDOWS"
 		}
 
 	filter "configurations:Debug"
