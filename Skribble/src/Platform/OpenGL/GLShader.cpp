@@ -190,7 +190,7 @@ namespace Skribble
 	void GLShader::Bind() const
 	{
 		glUseProgram(rendererID);
-	}
+	} 
 
 	void GLShader::Unbind() const
 	{
@@ -240,48 +240,48 @@ namespace Skribble
 	void GLShader::UploadUniformInt(const std::string& name, const int& value)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform1i(location, value);
+		if (location != -1) glUniform1i(location, value);
 	}
 
 	void GLShader::UploadUniformIntArray(const std::string& name, int* values, uint32_t count)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform1iv(location, count, values);
+		if (location != -1) glUniform1iv(location, count, values);
 	}
 
 	void GLShader::UploadUniformFloat(const std::string& name, float value)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform1f(location, value);
+		if (location != -1) glUniform1f(location, value);
 	}
 
 	void GLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& values)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform2f(location, values.x, values.y);
+		if (location != -1) glUniform2f(location, values.x, values.y);
 	}
 
 	void GLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& values)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform3f(location, values.x, values.y, values.z);
+		if (location != -1) glUniform3f(location, values.x, values.y, values.z);
 	}
 
 	void GLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& values)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniform4f(location, values.x, values.y, values.z, values.w);
+		if (location != -1) glUniform4f(location, values.x, values.y, values.z, values.w);
 	}
 
 	void GLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+		if (location != -1) glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
 	void GLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
-		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+		if (location != -1) glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 }

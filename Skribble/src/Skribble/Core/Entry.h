@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Core.h"
+#include "Application.h"
+#include "Skribble/Debug/Instrumentor.h"
 
 #ifdef  SKRIBBLE_WINDOWS
 

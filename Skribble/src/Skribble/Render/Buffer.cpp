@@ -3,7 +3,7 @@
 #include "../Core/Core.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 #include "Platform/OpenGL/GLVertexBuffer.h"
 #include "Platform/OpenGL/GLIndexBuffer.h"
 #endif
@@ -18,7 +18,7 @@ namespace Skribble
 		case RenderAPIType::None:
 			return nullptr;
 
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 		case RenderAPIType::OpenGL:
 			return CreateRef<GLVertexBuffer>(size);
@@ -38,7 +38,7 @@ namespace Skribble
 		case RenderAPIType::None:
 			return nullptr;
 
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 		case RenderAPIType::OpenGL:
 			return CreateRef<GLVertexBuffer>(vertices, size);
@@ -58,7 +58,7 @@ namespace Skribble
 		case RenderAPIType::None:
 			return nullptr;
 
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 		case RenderAPIType::OpenGL:
 			return CreateRef<GLIndexBuffer>(indices, count);

@@ -10,7 +10,7 @@ namespace Skribble
 	class GLTexture2D : public Texture2D
 	{
 	public:
-		GLTexture2D(uint32_t width, uint32_t height);
+		GLTexture2D(uint32_t width, uint32_t height, int channels, int channelSize);
 		GLTexture2D(const std::string& path);
 		virtual ~GLTexture2D();
 
@@ -28,6 +28,8 @@ namespace Skribble
 		}
 
 	private:
+		void SetFormats(int channels, int channelSize);
+
 		std::string path;
 		uint32_t width, height;
 		uint32_t rendererID;

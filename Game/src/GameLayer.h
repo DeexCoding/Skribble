@@ -20,8 +20,14 @@ public:
 	bool OnWindowResize(Skribble::WindowResizeEvent& e);
 
 private:
-	Skribble::CameraController camera;
+	FT_Library ft;
 
-	glm::vec3 cameraPosition;
-	glm::vec3 squarePosition;
+	Skribble::CameraController camera;
+	Skribble::ShaderLibrary shaders;
+
+	glm::vec2 playerPosition;
+	glm::vec2 playerVelocity;
+
+	Skribble::Ref<Skribble::Font> comicSansFont;
+	Skribble::Ref<Skribble::Texture2D> defaultTex;
 };

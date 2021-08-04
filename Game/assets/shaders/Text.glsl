@@ -1,4 +1,5 @@
 #type vertex
+
 #version 450
 
 layout(location = 0) in vec3 aPosition;
@@ -38,6 +39,7 @@ void main()
 }
 
 #type pixel
+
 #version 450
 
 layout(location = 0) out vec4 color;
@@ -88,5 +90,10 @@ void main()
 		case 31: texColor *= texture(uTextures[31], vTexCoord * vTilingFactor); break;
 	}
 
-	color = texColor;
+	color = vec4(vColor.r, vColor.g, vColor.b, vColor.a * texColor.r);
+
+	if (vTexIndex == 0)
+	{
+		color = vec4(0.0, 0.0, 0.0, 1.0);
+	}
 }

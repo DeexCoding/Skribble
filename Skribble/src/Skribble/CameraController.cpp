@@ -12,12 +12,7 @@ namespace Skribble
 
 	void CameraController::Update()
 	{
-		camera.SetPosition(cameraPosition);
 
-		if (rotation)
-		{
-			camera.SetRotation(cameraRotation);
-		}
 	}
 
 	void CameraController::OnEvent(Event& e)

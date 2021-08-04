@@ -61,7 +61,7 @@ namespace Skribble
 	Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
-		Add(shader);
+		Add(name, shader);
 		return shader;
 	}
 

@@ -54,7 +54,7 @@ namespace Skribble
 
 		window = glfwCreateWindow((int)propeties.width, (int)propeties.height, data.title.c_str(), nullptr, nullptr);
 
-		context = new GLContext(window);
+		context = CreateScope<GLContext>(window);
 		context->Initalize();
 
 		glfwSetWindowUserPointer(window, &data);

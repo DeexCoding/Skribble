@@ -28,8 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\textures\Default.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <None Include="assets\scripts\test.cs" />
+    <None Include="assets\scripts\hello.cs" />
   </ItemGroup>
 </Project>

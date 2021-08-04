@@ -32,6 +32,8 @@ namespace Skribble
 			api->DrawIndexed(_vertexArray, count);
 		}
 
+
+
 	private:
 		struct RendererData
 		{

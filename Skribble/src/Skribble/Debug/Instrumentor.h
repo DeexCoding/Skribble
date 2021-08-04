@@ -102,9 +102,9 @@ namespace Skribble
 			static Instrumentor instance;
 			return instance;
 		}
+
 	private:
-		Instrumentor()
-			: currentSession(nullptr)
+		Instrumentor() : currentSession(nullptr)
 		{
 		}
 
@@ -216,13 +216,38 @@ namespace Skribble
 }
 
 #define SKRIBBLE_PROFILE 0
-
 #if SKRIBBLE_PROFILE
-#define SKRIBBLE_PROFILE_BEGIN_SESSION(name, filepath) ::Skribble::Instrumentor::Get().BeginSession(name, filepath)
-#define SKRIBBLE_PROFILE_END_SESSION() ::Skribble::Instrumentor::Get().EndSession()
-#define SKRIBBLE_PROFILE_SCOPE(name) ::Skribble::InstrumentationTimer timer##__LINE__(name);
+// Resolve which function signature macro will be used. Note that this only
+// is resolved when the (pre)compiler starts, so the syntax highlighting
+// could mark the wrong one in your editor!
+#if defined(__GNUC__) || (defined(__MWERKS__) && (__MWERKS__ >= 0x3000)) || (defined(__ICC) && (__ICC >= 600)) || defined(__ghs__)
+#define SKRIBBLE_FUNC_SIG __PRETTY_FUNCTION__
+#elif defined(__DMC__) && (__DMC__ >= 0x810)
+#define SKRIBBLE_FUNC_SIG __PRETTY_FUNCTION__
+#elif (defined(__FUNCSIG__) || (_MSC_VER))
+#define SKRIBBLE_FUNC_SIG __FUNCSIG__
+#elif (defined(__INTEL_COMPILER) && (__INTEL_COMPILER >= 600)) || (defined(__IBMCPP__) && (__IBMCPP__ >= 500))
+#define SKRIBBLE_FUNC_SIG __FUNCTION__
+#elif defined(__BORLANDC__) && (__BORLANDC__ >= 0x550)
+#define SKRIBBLE_FUNC_SIG __FUNC__
+#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901)
+#define SKRIBBLE_FUNC_SIG __func__
+#elif defined(__cplusplus) && (__cplusplus >= 201103)
+#define SKRIBBLE_FUNC_SIG __func__
+#else
+#define SKRIBBLE_FUNC_SIG "SKRIBBLE_FUNC_SIG unknown!"
+#endif
+
+#define SKRIBBLE_PROFILE_BEGIN_SESSION(name, filepath) ::Hazel::Instrumentor::Get().BeginSession(name, filepath)
+#define SKRIBBLE_PROFILE_END_SESSION() ::Hazel::Instrumentor::Get().EndSession()
+#define SKRIBBLE_PROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::Hazel::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+											   ::Hazel::InstrumentationTimer timer##line(fixedName##line.Data)
+#define SKRIBBLE_PROFILE_SCOPE_LINE(name, line) SKRIBBLE_PROFILE_SCOPE_LINE2(name, line)
+#define SKRIBBLE_PROFILE_SCOPE(name) SKRIBBLE_PROFILE_SCOPE_LINE(name, __LINE__)
+#define SKRIBBLE_PROFILE_FUNCTION() SKRIBBLE_PROFILE_SCOPE(SKRIBBLE_FUNC_SIG)
 #else
 #define SKRIBBLE_PROFILE_BEGIN_SESSION(name, filepath)
 #define SKRIBBLE_PROFILE_END_SESSION()
 #define SKRIBBLE_PROFILE_SCOPE(name)
+#define SKRIBBLE_PROFILE_FUNCTION()
 #endif

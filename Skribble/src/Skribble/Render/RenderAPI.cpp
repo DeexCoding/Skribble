@@ -4,7 +4,7 @@
 
 namespace Skribble
 {
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 	RenderAPIType RenderAPI::apiType = RenderAPIType::OpenGL;
 

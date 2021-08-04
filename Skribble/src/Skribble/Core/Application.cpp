@@ -24,6 +24,8 @@ namespace Skribble
 		window->SetEventCallback(BIND_EVENTFUNCTION(Application::OnEvent));
 
 		Renderer::Init();
+
+
 	}
 
 	Application::~Application()

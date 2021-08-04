@@ -24,16 +24,19 @@
 
 //Rendering
 #include "Skribble/Render/Renderer.h"
+#include "Skribble/Render/Batch2D.h"
+
 #include "Skribble/Render/VertexBuffer.h"
 #include "Skribble/Render/IndexBuffer.h"
 #include "Skribble/Render/VertexArray.h"
 #include "Skribble/Render/Shader.h"
 #include "Skribble/Render/Texture.h"
-
-#include "Skribble/Render/Batch2D.h"
+#include "Skribble/Render/Font.h"
 
 #include "Skribble/Render/Camera.h"
 #include "Skribble/CameraController.h"
+
+#include "Skribble/Core/Color.h"
 
 //Other
 #include "Skribble/Core/Time.h"

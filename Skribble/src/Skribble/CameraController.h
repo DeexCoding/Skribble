@@ -18,12 +18,18 @@ namespace Skribble
 		Camera& GetCamera() { return camera; }
 		const Camera& GetCamera() const { return camera; }
 
-		float GetZoom() { return zoom; }
-		float SetZoom(float zoom) { this->zoom = zoom; }
+		const glm::vec3& GetPosition() const { return camera.GetPosition(); }
+		void SetPosition(const glm::vec3& position) { camera.SetPosition(position); }
 
-		glm::vec3 cameraPosition = { 0.0f, 0.0f, 0.0f };
+		const glm::vec3& GetRotation() const { return camera.GetRotation(); }
+		void SetRotation(const glm::vec3& rotation) { camera.SetRotation(rotation); }
 
-		float cameraRotation;
+		float GetZoom() const { return zoom; }
+		void SetZoom(float zoom) 
+		{ 
+			this->zoom = zoom; 
+			camera.SetProjection(-aspectRatio * zoom, aspectRatio * zoom, -zoom, zoom); 
+		}
 
 	private:
 		bool OnWindowResized(WindowResizeEvent& e);

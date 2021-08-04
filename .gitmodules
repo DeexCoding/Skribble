@@ -10,3 +10,6 @@
 [submodule "Skribble/vendor/FreeType"]
 	path = Skribble/vendor/FreeType
 	url = https://gitlab.freedesktop.org/freetype/freetype.git
+[submodule "mono"]
+	path = Skribble/vendor/mono
+	url = https://github.com/mono/mono

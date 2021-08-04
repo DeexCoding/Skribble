@@ -13,8 +13,11 @@ namespace Skribble
 
 	void Camera::RecalculateView()
 	{
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::rotate(glm::mat4(1.0f), 
-			glm::radians(rotation), glm::vec3(0, 0, 1));
+		glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), { 1, 0, 0 }) *
+			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), { 0, 1, 0 }) *
+			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.z), { 0, 0, 1 });
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * rotationMatrix;
 
 		viewMatrix = glm::inverse(transform);
 		viewProjectionMatrix = projectionMatrix * viewMatrix;

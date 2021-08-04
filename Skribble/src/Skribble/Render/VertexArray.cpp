@@ -14,7 +14,7 @@ namespace Skribble
 		case RenderAPIType::None:
 			return nullptr;
 
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 		case RenderAPIType::OpenGL:
 			return CreateRef<GLVertexArray>();

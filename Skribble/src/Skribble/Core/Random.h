@@ -38,7 +38,7 @@ public:
 	//Generates a float between 0 (including) and max (including)
 	static float Float(float max)
 	{
-		return Float() + (float)Int(max - 1);
+		return Float() + (float)Int((int)max - 1);
 	}
 
 	//Generates a float between min (including) and max (including)

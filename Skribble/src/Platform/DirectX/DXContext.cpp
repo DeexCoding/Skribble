@@ -1,3 +1,5 @@
+#include "skpch.h"
+
 #include "DXContext.h"
 
 namespace Skribble

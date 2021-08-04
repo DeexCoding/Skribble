@@ -4,7 +4,7 @@
 
 #include <GLFW/glfw3.h>
 
-#if SKRIBBLE_WINDOWS
+#ifdef SKRIBBLE_WINDOWS
 
 namespace Skribble
 {

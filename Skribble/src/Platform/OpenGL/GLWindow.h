@@ -33,7 +33,7 @@ namespace Skribble
 
 		GLFWwindow* window;
 
-		GrphicsContext* context;
+		Scope<GrphicsContext> context;
 
 		struct WindowData
 		{

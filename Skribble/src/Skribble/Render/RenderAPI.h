@@ -23,6 +23,8 @@ namespace Skribble
 
 		virtual void DrawIndexed(const Ref<VertexArray>& _vertexArray, uint32_t indexCount) = 0;
 
+		//virtual void DisableByteAlignment();
+
 		inline static RenderAPIType GetAPIType() { return apiType; }
 
 	private:

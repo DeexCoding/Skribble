@@ -18,19 +18,20 @@ namespace Skribble
 		glm::vec2 TexCoord;
 		float TexIndex;
 		float TilingFactor;
+		int flipX;
+		int flipY;
 		//TODO: MaskId
 	};
 
-	struct Quad2DData
+	struct Batch2DData
 	{
 		static const uint32_t MaxQuadPerDraw = 10000;
 		static const uint32_t MaxVerteciesPerDraw = MaxQuadPerDraw * 4;
 		static const uint32_t MaxIndiciesPerDraw = MaxQuadPerDraw * 6;
-		static const uint32_t MaxTextureSlots = 16; //TODO: RenderCaps
+		static const uint32_t MaxTextureSlots = 32; //TODO: RenderCaps
 
 		Ref<VertexArray> QuadVertexArray;
 		Ref<VertexBuffer> QuadVertexBuffer;
-		Ref<Shader> TextureShader;
 		Ref<Texture2D> WhiteTexture;
 
 		uint32_t QuadIndexCount = 0;
@@ -38,31 +39,34 @@ namespace Skribble
 		QuadVertex* QuadVertexBufferBase = nullptr;
 		QuadVertex* QuadVertexBufferPtr = nullptr;
 
+		Ref<Shader> CurrentShader;
+
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
 		uint32_t TextureSlotIndex = 1; // 0 - WhiteTexture
 
-		glm::vec4 QuadVertexPositions[4];
+		glm::vec4 QuadVertexPositions[4]{};
+		int32_t samplers[MaxTextureSlots]{};
 	};
 
 	
 
-	static Quad2DData* data;
+	static Batch2DData* data;
 
 	void Batch2D::Initalize()
 	{
-		data = new Quad2DData();
+		data = new Batch2DData();
 
 		data->QuadVertexArray = VertexArray::Create();
-
 		data->QuadVertexBuffer = VertexBuffer::Create(data->MaxVerteciesPerDraw * sizeof(QuadVertex));
-
 		data->QuadVertexBuffer->SetLayout(
 			{
 				{ ShaderDataType::Float3, "aPosition" },
 				{ ShaderDataType::Float4, "aColor" },
 				{ ShaderDataType::Float2, "aTexCoord" },
 				{ ShaderDataType::Float, "aTexIndex" },
-				{ ShaderDataType::Float, "aTilingFactor" }
+				{ ShaderDataType::Float, "aTilingFactor" },
+				{ ShaderDataType::Int, "aFlipX" },
+				{ ShaderDataType::Int, "aFlipY" }
 			});
 
 		data->QuadVertexArray->AddVertexBuffer(data->QuadVertexBuffer);
@@ -94,16 +98,10 @@ namespace Skribble
 		uint32_t whiteTextureData = 0xffffffff;
 		data->WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
 
-		int32_t samplers[data->MaxTextureSlots];
-
-		for (uint32_t i = 0; i < data->MaxTextureSlots; i++)
+		for (int32_t i = 0; i < data->MaxTextureSlots; i++)
 		{
-			samplers[i] = i;
+			data->samplers[i] = i;
 		}
-
-		data->TextureShader = Shader::Create("assets/shaders/Texture.glsl");
-		data->TextureShader->Bind();
-		data->TextureShader->SetIntArray("uTextures", samplers, data->MaxTextureSlots);
 
 		data->TextureSlots[0] = data->WhiteTexture;
 
@@ -111,11 +109,6 @@ namespace Skribble
 		data->QuadVertexPositions[1] = {  0.5f, -0.5f, 0.0f, 1.0f };
 		data->QuadVertexPositions[2] = {  0.5f,  0.5f, 0.0f, 1.0f };
 		data->QuadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
-
-		/*for (uint32_t i = 0; i < data->TextureSlots.size(); i++)
-		{
-			data->TextureSlots[i] = 0;
-		}*/
 	}
 
 	void Batch2D::Shutdown()
@@ -123,29 +116,45 @@ namespace Skribble
 		delete data;
 	}
 	
-	void Batch2D::Begin(const Camera& camera)
+	void Batch2D::AddSamplers(Ref<Shader> shader)
 	{
-		data->TextureShader->Bind();
-		data->TextureShader->SetMat4("uViewProjection", camera.GetViewProjectionMatrix());
+		shader->Bind();
+		shader->SetIntArray("uTextures", data->samplers, data->MaxTextureSlots);
+	}
+
+	void Batch2D::Begin(const Camera& camera, Ref<Shader> shader)
+	{
+		shader->Bind();
+		shader->SetMat4("uViewProjection", camera.GetViewProjectionMatrix());
+
+		data->CurrentShader = shader;
 
 		NewBatch();
 	}
 
 	void Batch2D::End()
 	{
-		uint32_t dataSize = (uint8_t*)data->QuadVertexBufferPtr - (uint8_t*)data->QuadVertexBufferBase;
-		data->QuadVertexBuffer->SetData(data->QuadVertexBufferBase, dataSize);
-
 		Flush();
+		data->CurrentShader->Unbind();
 	}
 
 	void Batch2D::Flush()
 	{
+		if (data->QuadIndexCount == 0)
+		{
+			return; // Nothing to draw
+		}
+
+		uint32_t dataSize = (uint32_t)((uint8_t*)data->QuadVertexBufferPtr - (uint8_t*)data->QuadVertexBufferBase);
+		data->QuadVertexBuffer->SetData(data->QuadVertexBufferBase, dataSize);
+
+		// Bind textures
 		for (uint32_t i = 0; i < data->TextureSlotIndex; i++)
 		{
 			data->TextureSlots[i]->Bind(i);
 		}
 
+		data->CurrentShader->Bind();
 		Renderer::DrawIndexed(data->QuadVertexArray, data->QuadIndexCount);
 	}
 
@@ -167,12 +176,14 @@ namespace Skribble
 	/// <param name="color"></param>
 	/// <param name="texture">nullptr if no texture is applied</param>
 	/// <param name="tilingFactor">1 for no tiling</param>
+	/// <param name="flipX"></param>
+	/// <param name="flipY"></param>
 	void Batch2D::DrawQuad(const glm::vec2& position, float sortingLayer, float rotation, const glm::vec2& size,
-		const glm::vec4& color, const Ref<Texture2D> texture, float tilingFactor)
+		const glm::vec4& color, const Ref<Texture2D> texture, float tilingFactor, bool flipX, bool flipY)
 	{
-		if (data->QuadIndexCount >= Quad2DData::MaxIndiciesPerDraw)
+		if (data->QuadIndexCount >= Batch2DData::MaxIndiciesPerDraw)
 		{
-			End();
+			Flush();
 			NewBatch();
 		}
 
@@ -180,9 +191,9 @@ namespace Skribble
 
 		if (texture != nullptr)
 		{
-			for (uint32_t i = 0; i < data->TextureSlotIndex; i++)
+			for (uint32_t i = 1; i < data->TextureSlotIndex; i++)
 			{
-				if (*data->TextureSlots[i].get() == *texture.get())
+				if (*data->TextureSlots[i] == *texture)
 				{
 					textureIndex = (float)i;
 					break;
@@ -191,7 +202,13 @@ namespace Skribble
 
 			if (textureIndex == 0.0f)
 			{
-				textureIndex = (float)data->TextureSlotIndex;
+				if (data->TextureSlotIndex >= Batch2DData::MaxTextureSlots)
+				{
+					Flush();
+					NewBatch();
+				}
+
+				textureIndex = data->TextureSlotIndex;
 				data->TextureSlots[data->TextureSlotIndex] = texture;
 				data->TextureSlotIndex++;
 			}
@@ -214,6 +231,8 @@ namespace Skribble
 		data->QuadVertexBufferPtr->TexCoord = { 0.0f, 0.0f };
 		data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		data->QuadVertexBufferPtr->TilingFactor = tilingFactor;
+		data->QuadVertexBufferPtr->flipX = flipX;
+		data->QuadVertexBufferPtr->flipY = flipY;
 		data->QuadVertexBufferPtr++;
 
 		data->QuadVertexBufferPtr->Position = transform * data->QuadVertexPositions[1];
@@ -221,6 +240,8 @@ namespace Skribble
 		data->QuadVertexBufferPtr->TexCoord = { 1.0f, 0.0f };
 		data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		data->QuadVertexBufferPtr->TilingFactor = tilingFactor;
+		data->QuadVertexBufferPtr->flipX = flipX;
+		data->QuadVertexBufferPtr->flipY = flipY;
 		data->QuadVertexBufferPtr++;
 
 		data->QuadVertexBufferPtr->Position = transform * data->QuadVertexPositions[2];
@@ -228,6 +249,8 @@ namespace Skribble
 		data->QuadVertexBufferPtr->TexCoord = { 1.0f, 1.0f };
 		data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		data->QuadVertexBufferPtr->TilingFactor = tilingFactor;
+		data->QuadVertexBufferPtr->flipX = flipX;
+		data->QuadVertexBufferPtr->flipY = flipY;
 		data->QuadVertexBufferPtr++;
 
 		data->QuadVertexBufferPtr->Position = transform * data->QuadVertexPositions[3];
@@ -235,8 +258,33 @@ namespace Skribble
 		data->QuadVertexBufferPtr->TexCoord = { 0.0f, 1.0f };
 		data->QuadVertexBufferPtr->TexIndex = textureIndex;
 		data->QuadVertexBufferPtr->TilingFactor = tilingFactor;
+		data->QuadVertexBufferPtr->flipX = flipX;
+		data->QuadVertexBufferPtr->flipY = flipY;
 		data->QuadVertexBufferPtr++;
 
 		data->QuadIndexCount += 6;
+	}
+
+	void Batch2D::DrawText(const glm::vec2& position, float sortingLayer, float rotation, const glm::vec2& size,
+		const glm::vec4& color, const Ref<Font> font, std::string text)
+	{
+		glm::vec2 pen = position;
+
+		for (int i = 0; i < text.size(); i++)
+		{
+			Character c = font->GetCharacter(text[i]);
+		
+			float x = pen.x + c.bearing.x * size.x;
+			float y = pen.y - (c.size.y - c.bearing.y) * size.y;
+		
+			float width = c.size.x * size.x;
+			float height = c.size.y * size.y;
+		
+			Batch2D::DrawQuad({ x, y }, sortingLayer, rotation, { width, height }, color, c.texture, 1.0f,
+				false, true);
+		
+			pen.x += (c.advance.x >> 6) * size.x;
+			pen.y += (c.advance.y >> 6) * size.y;
+		}
 	}
 }

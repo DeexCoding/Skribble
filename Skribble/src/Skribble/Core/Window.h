@@ -17,8 +17,8 @@ namespace Skribble
 		unsigned int width;
 		unsigned int height;
 
-		WindowPropeties(const std::string& _name = "Skribble", unsigned int _width = 640, unsigned int _height = 460)
-			: name(_name), width(_width), height(_height) {}
+		WindowPropeties(const std::string& name = "Skribble", unsigned int width = 640, unsigned int height = 460)
+			: name(name), width(width), height(height) {}
 
 	};
 

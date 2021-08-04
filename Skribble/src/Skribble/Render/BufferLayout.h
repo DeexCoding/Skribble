@@ -6,7 +6,7 @@ namespace Skribble
 {
 	enum class ShaderDataType
 	{
-		None = 0, Float, Float2, Float3, Float4, Int, Int2, Int3, Int4, Mat3, Mat4, Bool
+		None = 0, Float, Float2, Float3, Float4, Int, Int2, Int3, Int4, Uint, Uint2, Uint3, Uint4, Mat3, Mat4, Bool
 	};
 
 	static uint32_t GetShaderDataTypeSize(ShaderDataType _type)
@@ -34,6 +34,16 @@ namespace Skribble
 		case Skribble::ShaderDataType::Int4:
 			return 16;
 
+		//A uint is 4 bytes
+		case Skribble::ShaderDataType::Uint:
+			return 4;
+		case Skribble::ShaderDataType::Uint2:
+			return 8;
+		case Skribble::ShaderDataType::Uint3:
+			return 12;
+		case Skribble::ShaderDataType::Uint4:
+			return 16;
+
 		//A matrix is made up of floats
 		case Skribble::ShaderDataType::Mat3:
 			return 36;
@@ -55,7 +65,7 @@ namespace Skribble
 		uint32_t size;
 		bool normalized;
 
-		BufferElement() {}
+		BufferElement() = default;
 
 		BufferElement(ShaderDataType _type, const std::string& _name, bool _normalized = false) : name(_name), type(_type),
 			size(GetShaderDataTypeSize(_type)), offset(0), normalized(_normalized) { }
@@ -79,6 +89,14 @@ namespace Skribble
 			case Skribble::ShaderDataType::Int3:
 				return 3;
 			case Skribble::ShaderDataType::Int4:
+				return 4;
+			case Skribble::ShaderDataType::Uint:
+				return 1;
+			case Skribble::ShaderDataType::Uint2:
+				return 2;
+			case Skribble::ShaderDataType::Uint3:
+				return 3;
+			case Skribble::ShaderDataType::Uint4:
 				return 4;
 			case Skribble::ShaderDataType::Mat3:
 				return 9;

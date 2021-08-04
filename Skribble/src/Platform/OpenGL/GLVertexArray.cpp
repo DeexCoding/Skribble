@@ -26,6 +26,14 @@ namespace Skribble
 			return GL_INT;
 		case Skribble::ShaderDataType::Int4:
 			return GL_INT;
+		case Skribble::ShaderDataType::Uint:
+			return GL_UNSIGNED_INT;
+		case Skribble::ShaderDataType::Uint2:
+			return GL_UNSIGNED_INT;
+		case Skribble::ShaderDataType::Uint3:
+			return GL_UNSIGNED_INT;
+		case Skribble::ShaderDataType::Uint4:
+			return GL_UNSIGNED_INT;
 		case Skribble::ShaderDataType::Mat3:
 			return GL_FLOAT;
 		case Skribble::ShaderDataType::Mat4:

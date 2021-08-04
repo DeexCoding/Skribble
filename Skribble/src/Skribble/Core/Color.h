@@ -25,7 +25,7 @@ namespace Skribble
         float s = hsva.y / 100;
         float v = hsva.z / 100;
         float C = s * v;
-        float X = C * (1 - glm::abs(std::fmod(hsva.x / 60.0, 2) - 1));
+        float X = C * (float)(1.0 - glm::abs(std::fmod((double)hsva.x / 60.0, 2.0) - 1.0));
         float m = v - C;
         float r, g, b;
 
@@ -54,9 +54,9 @@ namespace Skribble
             r = C, g = 0, b = X;
         }
 
-        int R = (r + m) * 255;
-        int G = (g + m) * 255;
-        int B = (b + m) * 255;
+        float R = (r + m);
+        float G = (g + m);
+        float B = (b + m);
 
         return { R, G, B, hsva.a };
     }
@@ -64,7 +64,7 @@ namespace Skribble
     static glm::vec4 RGBAtoHSVA(const glm::vec4& rgba)
     {
         glm::vec4 hsva;
-        double min, max, delta;
+        float min, max, delta;
 
         min = rgba.r < rgba.g ? rgba.r : rgba.g;
         min = min < rgba.b ? min : rgba.b;
@@ -76,20 +76,20 @@ namespace Skribble
 
         delta = max - min;
 
-        if (delta < 0.00001)
+        if (delta < 0.00001f)
         {
             hsva.y = 0;
             hsva.x = 0;
 
             return hsva;
         }
-        if (max > 0.0) 
+        if (max > 0.0f) 
         { // NOTE: if Max is == 0, this divide would cause a crash
             hsva.y = (delta / max);
         }
         else 
         {
-            hsva.y = 0.0;
+            hsva.y = 0.0f;
             hsva.x = NAN;
             return hsva;
         }
@@ -102,19 +102,19 @@ namespace Skribble
         {
             if (rgba.g >= max)
             {
-                hsva.x = 2.0 + (rgba.b - rgba.r) / delta;
+                hsva.x = 2.0f + (rgba.b - rgba.r) / delta;
             }
             else
             {
-                hsva.x = 4.0 + (rgba.r - rgba.g) / delta;
+                hsva.x = 4.0f + (rgba.r - rgba.g) / delta;
             }
         }
 
-        hsva.x *= 60.0;
+        hsva.x *= 60.0f;
 
-        if (hsva.x < 0.0)
+        if (hsva.x < 0.0f)
         {
-            hsva.x += 360.0;
+            hsva.x += 360.0f;
         }
 
         return hsva;
