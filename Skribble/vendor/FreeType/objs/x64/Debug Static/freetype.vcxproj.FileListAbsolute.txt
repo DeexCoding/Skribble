@@ -1,0 +1,1 @@
+E:\DEV\Skribble\Skribble\vendor\FreeType\objs\x64\Debug Static\freetype.lib

@@ -1,0 +1,1 @@
+E:\DEV\Skribble\Skribble\vendor\FreeType\objs\Win32\Release Static\freetype.lib

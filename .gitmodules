@@ -7,9 +7,3 @@
 [submodule "Skribble/vendor/glm"]
 	path = Skribble/vendor/glm
 	url = https://github.com/g-truc/glm
-[submodule "Skribble/vendor/FreeType"]
-	path = Skribble/vendor/FreeType
-	url = https://gitlab.freedesktop.org/freetype/freetype.git
-[submodule "mono"]
-	path = Skribble/vendor/mono
-	url = https://github.com/mono/mono

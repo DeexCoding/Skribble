@@ -1,0 +1,2 @@
+E:\DEV\Skribble\Skribble\vendor\FreeType\objs\x64\Debug\freetype.dll
+E:\DEV\Skribble\Skribble\vendor\FreeType\objs\x64\Debug\freetype.pdb

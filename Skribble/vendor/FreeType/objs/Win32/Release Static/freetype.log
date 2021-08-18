@@ -1,0 +1,48 @@
+﻿  autofit.c
+  ftbase.c
+  ftbbox.c
+  ftbdf.c
+  ftbitmap.c
+  ftcid.c
+  ftfstype.c
+  ftgasp.c
+  ftglyph.c
+  ftgxval.c
+  ftinit.c
+  ftmm.c
+  ftotval.c
+  ftpatent.c
+  ftpfr.c
+  ftstroke.c
+  ftsynth.c
+  ftsystem.c
+  fttype1.c
+  ftwinfnt.c
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\base\ftstroke.c(1021): warning C4701: potentially uninitialized local variable 'sigma' used
+  bdf.c
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\base\ftstroke.c(1116): warning C4701: potentially uninitialized local variable 'sigma' used
+  ftcache.c
+  cff.c
+  type1cid.c
+  ftgzip.c
+  ftlzw.c
+  pcf.c
+  pfr.c
+  psaux.c
+  pshinter.c
+  psmodule.c
+  raster.c
+  sfnt.c
+  smooth.c
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\sfnt\sfwoff2.c(317,37): warning C4100: 'src_size': unreferenced formal parameter (compiling source file ..\..\..\src\sfnt\sfnt.c)
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\sfnt\sfwoff2.c(316,37): warning C4100: 'src': unreferenced formal parameter (compiling source file ..\..\..\src\sfnt\sfnt.c)
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\sfnt\sfwoff2.c(315,37): warning C4100: 'dst_size': unreferenced formal parameter (compiling source file ..\..\..\src\sfnt\sfnt.c)
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\sfnt\sfwoff2.c(314,37): warning C4100: 'dst': unreferenced formal parameter (compiling source file ..\..\..\src\sfnt\sfnt.c)
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\smooth\ftgrays.c(533): warning C4706: assignment within conditional expression
+  truetype.c
+  type1.c
+  type42.c
+E:\DEV\Skribble\Skribble\vendor\FreeType\src\truetype\ttgxvar.c(2237): warning C4701: potentially uninitialized local variable 'fvar_head' used
+  winfnt.c
+  ftdebug.c
+  freetype.vcxproj -> E:\DEV\Skribble\Skribble\vendor\FreeType\objs\Win32\Release Static\freetype.lib
