@@ -31,6 +31,9 @@
     <Filter Include="src\Skribble\Events">
       <UniqueIdentifier>{2ED42893-9A35-06A1-23A3-4C538F033D60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Skribble\Maths">
+      <UniqueIdentifier>{7647B5ED-622B-7643-CB8B-7096B78E60C5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Skribble\Render">
       <UniqueIdentifier>{B9064DB0-2568-2ABE-AED5-70701A36617D}</UniqueIdentifier>
     </Filter>
@@ -105,9 +108,6 @@
     <ClInclude Include="src\Skribble\Core\Application.h">
       <Filter>src\Skribble\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Maths\Color.h">
-      <Filter>src\Skribble\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Skribble\Core\Core.h">
       <Filter>src\Skribble\Core</Filter>
     </ClInclude>
@@ -155,6 +155,12 @@
     </ClInclude>
     <ClInclude Include="src\Skribble\Events\MouseEvent.h">
       <Filter>src\Skribble\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Maths\Color.h">
+      <Filter>src\Skribble\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Maths\Vector.h">
+      <Filter>src\Skribble\Maths</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Render\Batch2D.h">
       <Filter>src\Skribble\Render</Filter>
@@ -558,6 +564,12 @@
     <ClInclude Include="vendor\glm\glm\ext\matrix_int4x4_sized.hpp">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\matrix_integer.hpp">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\matrix_integer.inl">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
     <ClInclude Include="vendor\glm\glm\ext\matrix_projection.hpp">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
@@ -708,6 +720,12 @@
     <ClInclude Include="vendor\glm\glm\ext\scalar_packing.inl">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\scalar_reciprocal.hpp">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\scalar_reciprocal.inl">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
     <ClInclude Include="vendor\glm\glm\ext\scalar_relational.hpp">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
@@ -837,6 +855,12 @@
     <ClInclude Include="vendor\glm\glm\ext\vector_packing.inl">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\vector_reciprocal.hpp">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext\vector_reciprocal.inl">
+      <Filter>vendor\glm\glm\ext</Filter>
+    </ClInclude>
     <ClInclude Include="vendor\glm\glm\ext\vector_relational.hpp">
       <Filter>vendor\glm\glm\ext</Filter>
     </ClInclude>
@@ -961,9 +985,6 @@
       <Filter>vendor\glm\glm\gtc</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\gtc\reciprocal.hpp">
-      <Filter>vendor\glm\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="vendor\glm\glm\gtc\reciprocal.inl">
       <Filter>vendor\glm\glm\gtc</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\gtc\round.hpp">
@@ -1245,6 +1266,12 @@
     <ClInclude Include="vendor\glm\glm\gtx\orthonormalize.inl">
       <Filter>vendor\glm\glm\gtx</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\glm\glm\gtx\pca.hpp">
+      <Filter>vendor\glm\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\gtx\pca.inl">
+      <Filter>vendor\glm\glm\gtx</Filter>
+    </ClInclude>
     <ClInclude Include="vendor\glm\glm\gtx\perpendicular.hpp">
       <Filter>vendor\glm\glm\gtx</Filter>
     </ClInclude>
@@ -1422,7 +1449,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Maths\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\DirectX\DXContext.cpp">
