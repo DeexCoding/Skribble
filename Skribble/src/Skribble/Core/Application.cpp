@@ -4,6 +4,7 @@
 #include "glm/glm.hpp"
 
 #include "Skribble/Render/Renderer.h"
+#include "Skribble/Audio/Audio.h"
 
 #include "Input.h"
 #include "Time.h"
@@ -24,8 +25,7 @@ namespace Skribble
 		window->SetEventCallback(BIND_EVENTFUNCTION(Application::OnEvent));
 
 		Renderer::Init();
-
-
+		Audio::Initalize();
 	}
 
 	Application::~Application()

@@ -2,17 +2,17 @@
 
 //The engine API
 
-//Basic
+//Core
 #include "Skribble/Core/Application.h"
 #include "Skribble/Core/Layer.h"
 #include "Skribble/Core/Debug.h"
+#include "Skribble/Core/Random.h"
 
+//Events
 #include "Skribble/Events/Event.h"
 #include "Skribble/Events/ApplicationEvent.h"
 #include "Skribble/Events/KeyEvent.h"
 #include "Skribble/Events/MouseEvent.h"
-
-#include "Skribble/Core/Random.h"
 
 //Input
 #include "Skribble/Core/Input.h"
@@ -36,7 +36,12 @@
 #include "Skribble/Render/Camera.h"
 #include "Skribble/CameraController.h"
 
-#include "Skribble/Core/Color.h"
+//Audio
+#include "Skribble/Audio/Audio.h"
+
+//Maths
+#include "Skribble/Maths/Color.h"
+#include "Skribble/Maths/Vector.h"
 
 //Other
 #include "Skribble/Core/Time.h"

@@ -1,0 +1,8 @@
+[13:55:47] [trace] SKRIBBLE: forward: vec3(0.000000, 0.000000, 1.000000), upward: vec3(0.000000, 1.000000, 0.000000)
+[13:55:47] [info] SKRIBBLE: File Info - assets/audio/supercoolbgmusic.wav : 
+[13:55:47] [info] SKRIBBLE:   Channels: 2
+[13:55:47] [info] SKRIBBLE:   Sample Rate: 44100
+[13:55:47] [info] SKRIBBLE:   Expected size: 4838400
+[13:55:47] [trace] SKRIBBLE:   Read 4838400 bytes
+[13:55:56] [trace] SKRIBBLE: Audio listener destruction
+[13:55:56] [trace] SKRIBBLE: forward: vec3(0.000000, 0.000000, 1.000000), upward: vec3(0.000000, 1.000000, 0.000000)

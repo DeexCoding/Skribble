@@ -18,17 +18,13 @@
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameLayer.cpp">
+    <ClCompile Include="src\TestingLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameLayer.h">
+    <ClInclude Include="src\TestingLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\scripts\test.cs" />
-    <None Include="assets\scripts\hello.cs" />
   </ItemGroup>
 </Project>

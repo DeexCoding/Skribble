@@ -19,6 +19,9 @@
     <Filter Include="src\Skribble">
       <UniqueIdentifier>{8A47AC83-76AA-3B28-1F30-74DE0B7207AB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Skribble\Audio">
+      <UniqueIdentifier>{0BD5E6EC-F7B8-A742-6019-A2954C1C92C4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Skribble\Core">
       <UniqueIdentifier>{22B2D192-8EC8-CF28-D73F-5B4A4395A0B0}</UniqueIdentifier>
     </Filter>
@@ -30,9 +33,6 @@
     </Filter>
     <Filter Include="src\Skribble\Render">
       <UniqueIdentifier>{B9064DB0-2568-2ABE-AED5-70701A36617D}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Skribble\Scripting">
-      <UniqueIdentifier>{0C3132C9-F82A-5B1B-E197-F12BCD30C187}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -93,13 +93,19 @@
     <ClInclude Include="src\Skribble.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skribble\Audio\Audio.h">
+      <Filter>src\Skribble\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Skribble\Audio\alhelpers.h">
+      <Filter>src\Skribble\Audio</Filter>
+    </ClInclude>
     <ClInclude Include="src\Skribble\CameraController.h">
       <Filter>src\Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Core\Application.h">
       <Filter>src\Skribble\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Core\Color.h">
+    <ClInclude Include="src\Skribble\Maths\Color.h">
       <Filter>src\Skribble\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Core\Core.h">
@@ -1416,6 +1422,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Skribble\Maths\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\DirectX\DXContext.cpp">
@@ -1453,6 +1460,12 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Audio\Audio.cpp">
+      <Filter>src\Skribble\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Skribble\Audio\alhelpers.cpp">
+      <Filter>src\Skribble\Audio</Filter>
     </ClCompile>
     <ClCompile Include="src\Skribble\CameraController.cpp">
       <Filter>src\Skribble</Filter>

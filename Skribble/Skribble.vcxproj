@@ -76,11 +76,13 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>skpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SKRIBBLE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\mono;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;AL_LIBTYPE_STATIC;SKRIBBLE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\OpenAL-Soft\include;vendor\OpenAL-Soft\src\common;vendor\libogg\include;vendor\Vorbis\include;vendor\minimp3;vendor\libwav\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -96,14 +98,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>skpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SKRIBBLE_RELESE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\mono;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;AL_LIBTYPE_STATIC;SKRIBBLE_RELESE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\OpenAL-Soft\include;vendor\OpenAL-Soft\src\common;vendor\libogg\include;vendor\Vorbis\include;vendor\minimp3;vendor\libwav\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -120,14 +123,15 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>skpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;SKRIBBLE_DISTRIBUTION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\mono;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;AL_LIBTYPE_STATIC;SKRIBBLE_DISTRIBUTION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\GLAD\include;vendor\glm;vendor\stb_image;vendor\FreeType\include;vendor\OpenAL-Soft\include;vendor\OpenAL-Soft\src\common;vendor\libogg\include;vendor\Vorbis\include;vendor\minimp3;vendor\libwav\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -151,9 +155,11 @@
     <ClInclude Include="src\Platform\OpenGL\GLWindow.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Skribble.h" />
+    <ClInclude Include="src\Skribble\Audio\Audio.h" />
+    <ClInclude Include="src\Skribble\Audio\alhelpers.h" />
     <ClInclude Include="src\Skribble\CameraController.h" />
     <ClInclude Include="src\Skribble\Core\Application.h" />
-    <ClInclude Include="src\Skribble\Core\Color.h" />
+    <ClInclude Include="src\Skribble\Maths\Color.h" />
     <ClInclude Include="src\Skribble\Core\Core.h" />
     <ClInclude Include="src\Skribble\Core\Debug.h" />
     <ClInclude Include="src\Skribble\Core\Entry.h" />
@@ -170,6 +176,7 @@
     <ClInclude Include="src\Skribble\Events\Event.h" />
     <ClInclude Include="src\Skribble\Events\KeyEvent.h" />
     <ClInclude Include="src\Skribble\Events\MouseEvent.h" />
+    <ClInclude Include="src\Skribble\Maths\Vector.h" />
     <ClInclude Include="src\Skribble\Render\Batch2D.h" />
     <ClInclude Include="src\Skribble\Render\BufferLayout.h" />
     <ClInclude Include="src\Skribble\Render\Camera.h" />
@@ -606,6 +613,8 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsTime.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Skribble\Audio\Audio.cpp" />
+    <ClCompile Include="src\Skribble\Audio\alhelpers.cpp" />
     <ClCompile Include="src\Skribble\CameraController.cpp" />
     <ClCompile Include="src\Skribble\Core\Application.cpp" />
     <ClCompile Include="src\Skribble\Core\Debug.cpp" />
@@ -623,7 +632,9 @@
     <ClCompile Include="src\Skribble\Render\Shader.cpp" />
     <ClCompile Include="src\Skribble\Render\Texture.cpp" />
     <ClCompile Include="src\Skribble\Render\VertexArray.cpp" />
-    <ClCompile Include="src\skpch.cpp" />
+    <ClCompile Include="src\skpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -635,6 +646,15 @@
     </ProjectReference>
     <ProjectReference Include="vendor\FreeType\FreeType.vcxproj">
       <Project>{49610F50-352E-6A5B-5E47-58034A739FE9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\OpenAL-Soft\OpenAL-Soft.vcxproj">
+      <Project>{2D783691-992D-AF86-2222-A95D8ED6A58A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Vorbis\Vorbis.vcxproj">
+      <Project>{DA7C93D8-C61E-BEAE-AFD9-D1029B1A45FF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\libwav\libwav.vcxproj">
+      <Project>{EAF96F0B-D69B-9AE1-BF56-AE35AB972132}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
