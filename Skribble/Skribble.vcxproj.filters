@@ -102,7 +102,7 @@
     <ClInclude Include="src\Skribble\Audio\alhelpers.h">
       <Filter>src\Skribble\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\CameraController.h">
+    <ClInclude Include="src\Skribble\OrthographicCameraController.h">
       <Filter>src\Skribble</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Core\Application.h">
@@ -168,7 +168,7 @@
     <ClInclude Include="src\Skribble\Render\BufferLayout.h">
       <Filter>src\Skribble\Render</Filter>
     </ClInclude>
-    <ClInclude Include="src\Skribble\Render\Camera.h">
+    <ClInclude Include="src\Skribble\Render\OrthographicCamera.h">
       <Filter>src\Skribble\Render</Filter>
     </ClInclude>
     <ClInclude Include="src\Skribble\Render\Font.h">
@@ -1493,7 +1493,7 @@
     <ClCompile Include="src\Skribble\Audio\alhelpers.cpp">
       <Filter>src\Skribble\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="src\Skribble\CameraController.cpp">
+    <ClCompile Include="src\Skribble\OrthographicCameraController.cpp">
       <Filter>src\Skribble</Filter>
     </ClCompile>
     <ClCompile Include="src\Skribble\Core\Application.cpp">
@@ -1523,7 +1523,7 @@
     <ClCompile Include="src\Skribble\Render\Buffer.cpp">
       <Filter>src\Skribble\Render</Filter>
     </ClCompile>
-    <ClCompile Include="src\Skribble\Render\Camera.cpp">
+    <ClCompile Include="src\Skribble\Render\OrthographicCamera.cpp">
       <Filter>src\Skribble\Render</Filter>
     </ClCompile>
     <ClCompile Include="src\Skribble\Render\Font.cpp">

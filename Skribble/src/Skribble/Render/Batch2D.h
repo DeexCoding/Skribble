@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "OrthographicCamera.h"
 #include "Texture.h"
 #include "Shader.h"
 #include "Font.h"
@@ -19,7 +19,7 @@ namespace Skribble
 
 		static void AddSamplers(Ref<Shader> shader);
 
-		static void Begin(const Camera& camera, Ref<Shader> shader);
+		static void Begin(const OrthographicCamera& camera, Ref<Shader> shader);
 		static void End();
 
 		static void Flush();

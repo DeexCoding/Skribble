@@ -81,6 +81,7 @@ namespace Skribble
 
 		static Ref<AudioSource> LoadAudioSource(const std::string& filepath);
 		static void Play(Ref<AudioSource> source);
+		static void Stop(Ref<AudioSource> source);
 
 	private:
 		static Ref<AudioSource> LoadAudioSourceOgg(const std::string& filename);

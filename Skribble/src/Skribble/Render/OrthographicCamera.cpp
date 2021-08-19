@@ -1,17 +1,17 @@
 #include "skpch.h"
-#include "Camera.h"
+#include "OrthographicCamera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Skribble
 {
-	Camera::Camera(float _left, float _right, float _bottom, float _top) : 
+	OrthographicCamera::OrthographicCamera(float _left, float _right, float _bottom, float _top) :
 		projectionMatrix(glm::ortho(_left, _right, _bottom, _top, -1.0f, 1.0f)), viewMatrix(1.0f)
 	{
 		viewProjectionMatrix = projectionMatrix * viewMatrix;
 	}
 
-	void Camera::RecalculateView()
+	void OrthographicCamera::RecalculateView()
 	{
 		glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), { 1, 0, 0 }) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), { 0, 1, 0 }) *
@@ -23,7 +23,7 @@ namespace Skribble
 		viewProjectionMatrix = projectionMatrix * viewMatrix;
 	}
 
-	void Camera::SetProjection(float _left, float _right, float _bottom, float _top)
+	void OrthographicCamera::SetProjection(float _left, float _right, float _bottom, float _top)
 	{
 		projectionMatrix = glm::ortho(_left, _right, _bottom, _top, -1.0f, 1.0f);
 		viewProjectionMatrix = projectionMatrix * viewMatrix;

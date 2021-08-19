@@ -49,6 +49,8 @@ namespace Skribble
 
 			window->Update();
 		}
+
+
 	}
 
 	void Application::Quit()

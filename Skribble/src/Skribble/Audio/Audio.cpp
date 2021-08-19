@@ -127,7 +127,7 @@ namespace Skribble
 
 		uint64_t samples = ov_pcm_total(&vf, -1);
 		float trackLength = (float)samples / (float)sampleRate; // in seconds
-		uint32_t bufferSize = sampleSize * channels * samples;
+		uint32_t bufferSize = sampleSize * channels * (uint32_t)samples;
 
 		SKRIBBLE_CORE_INFO("File Info - {0} : ", filename);
 		SKRIBBLE_CORE_INFO("  Channels: {0}", channels);
@@ -164,7 +164,7 @@ namespace Skribble
 			}
 		}
 
-		uint32_t size = bufferPtr - oggBuffer;
+		uint32_t size = (uint32_t)(bufferPtr - oggBuffer);
 		SKRIBBLE_CORE_ASSERT(bufferSize == size, "Invalid size!");
 
 		SKRIBBLE_CORE_TRACE("  Read {0} bytes", size);
@@ -194,7 +194,7 @@ namespace Skribble
 	{
 		mp3dec_file_info_t info;
 		int loadResult = mp3dec_load(&mp3d, filename.c_str(), &info, NULL, NULL);
-		uint32_t size = info.samples * sizeof(mp3d_sample_t);
+		uint32_t size = (uint32_t)(info.samples * sizeof(mp3d_sample_t));
 
 		auto sampleRate = info.hz;
 		auto channels = info.channels;
@@ -241,11 +241,12 @@ namespace Skribble
 		auto sampleSize = wav_get_sample_size(wav);
 		auto sampleRate = wav_get_sample_rate(wav);
 		auto channels = wav_get_num_channels(wav);
-		auto alFormat = GetOpenALFormat(channels, sampleSize);
+		auto alFormat = GetOpenALFormat((uint32_t)channels, (uint32_t)sampleSize);
 
 		uint64_t samples = (uint64_t)wav_get_length(wav);
 		float trackLength = (float)samples / (float)sampleRate; // in seconds
-		uint32_t bufferSize = sampleSize * channels * samples;
+		//casting smaples (uint64_t) to uint32_t possible loss of data
+		uint32_t bufferSize = (uint32_t)sampleSize * (uint32_t)channels * (uint32_t)samples;
 
 		SKRIBBLE_CORE_INFO("File Info - {0} : ", filename);
 		SKRIBBLE_CORE_INFO("  Channels: {0}", channels);
@@ -266,8 +267,8 @@ namespace Skribble
 		int eof = 0;
 		while (!eof)
 		{
-			int framesRead = wav_read(wav, (void*)bufferPtr, 4096 / sampleSize);
-			long length = framesRead * sampleSize * channels;
+			int framesRead = (int)wav_read(wav, (void*)bufferPtr, 4096 / sampleSize);
+			long length = (long)(framesRead * sampleSize * channels);
 			bufferPtr += length;
 			if (framesRead < 4096 / sampleSize)
 			{
@@ -285,7 +286,7 @@ namespace Skribble
 			}
 		}
 
-		uint32_t size = bufferPtr - wavBuffer;
+		uint32_t size = (uint32_t)(bufferPtr - wavBuffer);
 		SKRIBBLE_CORE_ASSERT(bufferSize == size, "Invalid size!");
 
 		SKRIBBLE_CORE_TRACE("  Read {0} bytes", size);
@@ -347,16 +348,20 @@ namespace Skribble
 		return nullptr;
 	}
 
-	void Audio::Play(Ref<AudioSource> audioSource)
+	void Audio::Play(Ref<AudioSource> source)
 	{
-		// Play the sound until it finishes
-		alSourcePlay(audioSource->sourceHandle);
+		alSourcePlay(source->sourceHandle);
 
 		// TODO: current playback time and playback finished callback
 		ALfloat offset;
 		ALenum playState;
-		alGetSourcei(audioSource->sourceHandle, AL_SOURCE_STATE, &playState);
-		alGetSourcef(audioSource->sourceHandle, AL_SEC_OFFSET, &offset);
+		alGetSourcei(source->sourceHandle, AL_SOURCE_STATE, &playState);
+		alGetSourcef(source->sourceHandle, AL_SEC_OFFSET, &offset);
+	}
+
+	void Audio::Stop(Ref<AudioSource> source)
+	{
+		alSourceStop(source->sourceHandle);
 	}
 
 	AudioListener::AudioListener(glm::vec3 position, glm::vec3 rotation)
@@ -367,8 +372,6 @@ namespace Skribble
 
 	AudioListener::~AudioListener()
 	{
-		SKRIBBLE_CORE_TRACE("Audio listener destruction");
-
 		SetPosition({ 0.0f, 0.0f, 0.0f });
 		SetRotation({ 0.0f, 0.0f, 0.0f });
 	}
@@ -398,8 +401,6 @@ namespace Skribble
 		glm::vec3 forward = transform * glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
 		glm::vec3 upward = transform * glm::vec4(0.0f, 1.0f, 0.0f, 1.0f);
 
-		SKRIBBLE_CORE_TRACE("forward: {0}, upward: {1}", glm::to_string(forward), glm::to_string(upward));
-
 		const ALfloat fwUp[] = { forward.x, forward.y, -forward.z, upward.x, upward.y, upward.z };
 		alListenerfv(AL_ORIENTATION, fwUp);
 	}
@@ -411,6 +412,10 @@ namespace Skribble
 
 	AudioSource::~AudioSource()
 	{
+		alSourceStop(sourceHandle);
+
+		alSourcei(sourceHandle, AL_BUFFER, 0);
+
 		alDeleteBuffers(1, &bufferHandle);
 		alDeleteSources(1, &sourceHandle);
 	}

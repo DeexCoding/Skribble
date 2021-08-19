@@ -4,10 +4,10 @@
 
 namespace Skribble
 {
-	class Camera
+	class OrthographicCamera
 	{
 	public:
-		Camera(float _left, float _right, float _bottom, float _top);
+		OrthographicCamera(float _left, float _right, float _bottom, float _top);
 
 		const glm::vec3& GetPosition() const { return position; }
 		void SetPosition(const glm::vec3& _position) { position = _position; RecalculateView(); }

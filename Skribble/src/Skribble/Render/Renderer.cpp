@@ -25,7 +25,7 @@ namespace Skribble
 		Batch2D::Initalize();
 	}
 
-	void Renderer::Begin(Camera& camera)
+	void Renderer::Begin(OrthographicCamera& camera)
 	{
 		data->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}

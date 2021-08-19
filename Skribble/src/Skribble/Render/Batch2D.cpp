@@ -122,7 +122,7 @@ namespace Skribble
 		shader->SetIntArray("uTextures", data->samplers, data->MaxTextureSlots);
 	}
 
-	void Batch2D::Begin(const Camera& camera, Ref<Shader> shader)
+	void Batch2D::Begin(const OrthographicCamera& camera, Ref<Shader> shader)
 	{
 		shader->Bind();
 		shader->SetMat4("uViewProjection", camera.GetViewProjectionMatrix());

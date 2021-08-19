@@ -19,7 +19,7 @@ public:
 
 	bool OnWindowResize(Skribble::WindowResizeEvent& e);
 
-	Skribble::CameraController camera;
+	Skribble::OrthographicCameraController camera;
 	Skribble::ShaderLibrary shaders;
 
 	glm::vec2 playerPosition;

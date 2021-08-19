@@ -11,7 +11,6 @@
 #include "../Render/IndexBuffer.h"
 #include "../Render/BufferLayout.h"
 #include "../Render/VertexArray.h"
-#include "Skribble/Render/Camera.h"
 
 namespace Skribble
 {

@@ -33,8 +33,8 @@
 #include "Skribble/Render/Texture.h"
 #include "Skribble/Render/Font.h"
 
-#include "Skribble/Render/Camera.h"
-#include "Skribble/CameraController.h"
+#include "Skribble/Render/OrthographicCamera.h"
+#include "Skribble/OrthographicCameraController.h"
 
 //Audio
 #include "Skribble/Audio/Audio.h"

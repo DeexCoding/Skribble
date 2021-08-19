@@ -2,7 +2,7 @@
 
 #include "RenderAPI.h"
 
-#include "Camera.h"
+#include "OrthographicCamera.h"
 #include "Shader.h"
 
 namespace Skribble
@@ -14,7 +14,7 @@ namespace Skribble
 		
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
-		static void Begin(Camera& camera);
+		static void Begin(OrthographicCamera& camera);
 		static void End();
 
 		static void Submit(const Ref<VertexArray>& _vertexArray, const Ref<Shader>& _shader,
