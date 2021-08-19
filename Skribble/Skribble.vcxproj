@@ -157,7 +157,6 @@
     <ClInclude Include="src\Skribble.h" />
     <ClInclude Include="src\Skribble\Audio\Audio.h" />
     <ClInclude Include="src\Skribble\Audio\alhelpers.h" />
-    <ClInclude Include="src\Skribble\OrthographicCameraController.h" />
     <ClInclude Include="src\Skribble\Core\Application.h" />
     <ClInclude Include="src\Skribble\Core\Core.h" />
     <ClInclude Include="src\Skribble\Core\Debug.h" />
@@ -177,12 +176,13 @@
     <ClInclude Include="src\Skribble\Events\MouseEvent.h" />
     <ClInclude Include="src\Skribble\Maths\Color.h" />
     <ClInclude Include="src\Skribble\Maths\Vector.h" />
+    <ClInclude Include="src\Skribble\OrthographicCameraController.h" />
     <ClInclude Include="src\Skribble\Render\Batch2D.h" />
     <ClInclude Include="src\Skribble\Render\BufferLayout.h" />
-    <ClInclude Include="src\Skribble\Render\OrthographicCamera.h" />
     <ClInclude Include="src\Skribble\Render\Font.h" />
     <ClInclude Include="src\Skribble\Render\GraphicsContext.h" />
     <ClInclude Include="src\Skribble\Render\IndexBuffer.h" />
+    <ClInclude Include="src\Skribble\Render\OrthographicCamera.h" />
     <ClInclude Include="src\Skribble\Render\RenderAPI.h" />
     <ClInclude Include="src\Skribble\Render\Renderer.h" />
     <ClInclude Include="src\Skribble\Render\Shader.h" />
@@ -622,7 +622,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Skribble\Audio\Audio.cpp" />
     <ClCompile Include="src\Skribble\Audio\alhelpers.cpp" />
-    <ClCompile Include="src\Skribble\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Skribble\Core\Application.cpp" />
     <ClCompile Include="src\Skribble\Core\Debug.cpp" />
     <ClCompile Include="src\Skribble\Core\Layer.cpp" />
@@ -630,10 +629,11 @@
     <ClCompile Include="src\Skribble\Core\Random.cpp" />
     <ClCompile Include="src\Skribble\Core\Time.cpp" />
     <ClCompile Include="src\Skribble\Core\Window.cpp" />
+    <ClCompile Include="src\Skribble\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Skribble\Render\Batch2D.cpp" />
     <ClCompile Include="src\Skribble\Render\Buffer.cpp" />
-    <ClCompile Include="src\Skribble\Render\OrthographicCamera.cpp" />
     <ClCompile Include="src\Skribble\Render\Font.cpp" />
+    <ClCompile Include="src\Skribble\Render\OrthographicCamera.cpp" />
     <ClCompile Include="src\Skribble\Render\RenderAPI.cpp" />
     <ClCompile Include="src\Skribble\Render\Renderer.cpp" />
     <ClCompile Include="src\Skribble\Render\Shader.cpp" />

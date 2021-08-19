@@ -1,6 +1,7 @@
 include "dependencies.lua"
 
 workspace "Skribble"
+	startproject "Game"
 	architecture "x86_64"
 
 	configurations
