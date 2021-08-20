@@ -70,7 +70,7 @@ namespace Skribble
 		SKRIBBLE_CORE_ASSERT(dataFormat & internalFormat, "Format not supported");
 
 		glCreateTextures(GL_TEXTURE_2D, 1, &rendererID);
-		glTextureStorage2D(rendererID, 1, internalFormat, this->width, this->height);
+		glTextureStorage2D(rendererID, 1, internalFormat, width, height);
 
 		glTextureParameteri(rendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(rendererID, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

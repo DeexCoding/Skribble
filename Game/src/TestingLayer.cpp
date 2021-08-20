@@ -72,8 +72,6 @@ void TestingLayer::Update()
 	Skribble::Batch2D::Begin(camera.GetCamera(), shaders.Get("Text"));
 	Skribble::Batch2D::DrawText({ -8.5f, -4.0f }, 0.0f, 0.0f, { 0.05f, 0.05f }, Skribble::White, comicSansFont,
 		"The quick brown fox jumps over the lazy dog");
-	Skribble::Batch2D::DrawText({ -8.5f, 4.0f }, 0.0f, 0.0f, { 0.05f, 0.05f }, Skribble::White, comicSansFont,
-		"T");
 	Skribble::Batch2D::End();
 	
 }

@@ -59,9 +59,9 @@ namespace Skribble
 	{
 		GLuint program = glCreateProgram();
 
-		SKRIBBLE_CORE_ASSERT(shaderSrcs.size() <= 5, "More than 5 shaders aren't supported!");
+		SKRIBBLE_CORE_ASSERT(shaderSrcs.size() <= 2, "More than 2 shaders aren't supported!");
 
-		std::array<GLenum, 5> glShaderIDs;
+		std::array<GLenum, 2> glShaderIDs;
 		int glShaderIDIndex = 0;
 
 		for (auto& kv : shaderSrcs)
@@ -131,6 +131,7 @@ namespace Skribble
 		for (auto id : glShaderIDs)
 		{
 			glDetachShader(program, id);
+			glDeleteShader(id);
 		}
 		
 		rendererID = program;

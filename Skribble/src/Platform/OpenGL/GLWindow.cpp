@@ -52,6 +52,10 @@ namespace Skribble
 			glfwInitalized = true;
 		}
 
+#ifdef DEBUG_GL
+		glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
+#endif
+
 		window = glfwCreateWindow((int)propeties.width, (int)propeties.height, data.title.c_str(), nullptr, nullptr);
 
 		context = CreateScope<GLContext>(window);

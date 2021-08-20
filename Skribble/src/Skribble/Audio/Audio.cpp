@@ -167,8 +167,6 @@ namespace Skribble
 		uint32_t size = (uint32_t)(bufferPtr - oggBuffer);
 		SKRIBBLE_CORE_ASSERT(bufferSize == size, "Invalid size!");
 
-		SKRIBBLE_CORE_TRACE("  Read {0} bytes", size);
-
 		// Release file
 		ov_clear(&vf);
 		fclose(f);
@@ -219,7 +217,7 @@ namespace Skribble
 
 		if (alGetError() != AL_NO_ERROR)
 		{
-			SKRIBBLE_CORE_TRACE("Failed to setup sound source");
+			SKRIBBLE_CORE_ASSERT(false, "Failed to setup sound source");
 		}
 
 		return result;
@@ -288,8 +286,6 @@ namespace Skribble
 
 		uint32_t size = (uint32_t)(bufferPtr - wavBuffer);
 		SKRIBBLE_CORE_ASSERT(bufferSize == size, "Invalid size!");
-
-		SKRIBBLE_CORE_TRACE("  Read {0} bytes", size);
 
 		// Release file
 		wav_close(wav);

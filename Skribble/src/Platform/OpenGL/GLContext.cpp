@@ -6,6 +6,22 @@
 
 namespace Skribble
 {
+#ifdef DEBUG_GL
+	void GLAPIENTRY
+		MessageCallback(GLenum source,
+			GLenum type,
+			GLuint id,
+			GLenum severity,
+			GLsizei length,
+			const GLchar* message,
+			const void* userParam)
+	{
+		SKRIBBLE_CORE_ERROR("OpenGL error : {0}", message);
+		SKRIBBLE_CORE_ASSERT(false, "OpenGL error!");
+	}
+
+#endif
+
 	GLContext::GLContext(GLFWwindow* _window) : window(_window)
 	{
 
@@ -18,6 +34,10 @@ namespace Skribble
 		glfwMakeContextCurrent(window);
 		int glad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		SKRIBBLE_CORE_ASSERT(glad, "Couldn't initalize Glad!");
+#ifdef DEBUG_GL
+		glEnable(GL_DEBUG_OUTPUT);
+		glDebugMessageCallback(MessageCallback, 0);
+#endif
 	}
 
 	void GLContext::SwapBuffers()

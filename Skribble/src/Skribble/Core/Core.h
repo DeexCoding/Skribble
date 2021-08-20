@@ -2,9 +2,6 @@
 
 #include <memory>
 
-#define SKRIBBLE_DISABLE 0
-#define SKRIBBLE_ENABLE 1
-
 //Platforms
 
 #ifdef _WIN64

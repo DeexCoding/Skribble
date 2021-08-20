@@ -280,9 +280,12 @@ namespace Skribble
 			float width = c.size.x * size.x;
 			float height = c.size.y * size.y;
 		
-			Batch2D::DrawQuad({ x, y }, sortingLayer, rotation, { width, height }, color, c.texture, 1.0f,
-				false, true);
-		
+			if (c.texture != nullptr)
+			{
+				Batch2D::DrawQuad({ x, y }, sortingLayer, rotation, { width, height }, color, c.texture, 1.0f,
+					false, true);
+			}
+
 			pen.x += (c.advance.x >> 6) * size.x;
 			pen.y += (c.advance.y >> 6) * size.y;
 		}

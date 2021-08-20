@@ -58,6 +58,19 @@ namespace Skribble
 				continue;
 			}
 
+			if (fontFace->glyph->bitmap.width == 0 || fontFace->glyph->bitmap.rows == 0)
+			{
+				characters[i] =
+				{
+					nullptr,
+					glm::ivec2(fontFace->glyph->bitmap.width, fontFace->glyph->bitmap.rows),
+					glm::ivec2(fontFace->glyph->bitmap_left, fontFace->glyph->bitmap_top),
+					glm::ivec2(fontFace->glyph->advance.x, fontFace->glyph->advance.y)
+				};
+
+				continue;
+			}
+
 			/* convert to an anti-aliased bitmap */
 			//FT_Render_Glyph(fontFace->glyph, FT_RENDER_MODE_NORMAL);
 
@@ -66,11 +79,6 @@ namespace Skribble
 			Ref<Texture2D> tex = Texture2D::Create(fontFace->glyph->bitmap.width, fontFace->glyph->bitmap.rows, 
 				1, 8);
 			
-			//SKRIBBLE_CORE_TRACE(fontFace->glyph->bitmap.width);
-			//SKRIBBLE_CORE_TRACE(fontFace->glyph->bitmap.rows);
-			//SKRIBBLE_CORE_TRACE(fontFace->glyph->bitmap.buffer);
-			//SKRIBBLE_CORE_TRACE(fontFace->glyph->advance.x);
-
 			tex->Bind();
 			tex->SetData(fontFace->glyph->bitmap.buffer, 
 				fontFace->glyph->bitmap.width * fontFace->glyph->bitmap.rows);

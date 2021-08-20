@@ -23,6 +23,8 @@ int main(int argc, char** argv)
 	SKRIBBLE_PROFILE_BEGIN_SESSION("End", "Skribble_Profile_Shutdown.json");
 	delete app;
 	SKRIBBLE_PROFILE_END_SESSION();
+
+	return 0;
 }
 
 #endif
